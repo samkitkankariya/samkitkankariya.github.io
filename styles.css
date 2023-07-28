@@ -479,13 +479,13 @@ body {
         font-size: 24px;
     }
 
-    .site-footer .social li a.linkedin-icon {
-        color: #7E9BBE; /* Pastel blue for LinkedIn icon */
-        
-    }
+            /* Your CSS styles for the YouTube icon link */
+        .site-footer .social li a.icon-youtube-play {
+            color: indianred; /* Pastel blue for YouTube icon */
+        }
 
-    .site-footer .social li a.linkedin-icon:hover {
-        background-color: #7E9BBE ;
-        color: #fff; /* Slightly darker pastel blue on hover for LinkedIn icon */
-        font-size: 24px;
-    }
+        .site-footer .social li a.icon-youtube-play:hover {
+            background-color: indianred;
+            color: #fff; /* Slightly darker pastel blue on hover for YouTube icon */
+            font-size: 24px;
+        }
