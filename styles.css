@@ -42,6 +42,22 @@
         }
         }
 
+        /* Stack the buttons on smaller screens (mobile mode) */
+@media screen and (max-width: 767px) {
+    ul.menu {
+        flex-direction: column;
+    }
+
+    ul.menu li {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    ul.menu li:last-child {
+        margin-bottom: 0;
+    }
+}
+
 /* Additional styles for the changing text and name */
 @font-face {
             font-family: 'MyCustomFont'; /* Choose a unique font name */
