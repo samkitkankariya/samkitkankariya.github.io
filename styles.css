@@ -1,0 +1,491 @@
+      ul.menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        ul.menu li {
+            margin-right: 20px;
+        }
+
+        ul.menu li:last-child {
+            margin-right: 0;
+        }
+
+        ul.menu li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        ul.menu li a:hover {
+            background-color: darkturquoise;
+            color: #fff;
+        }
+
+          /* Center the buttons on larger screens (desktop mode) */
+        @media screen and (min-width: 768px) {
+            .site-navigation {
+                text-align: center;
+            }
+
+            ul.menu {
+                justify-content: center;
+            }
+
+            ul.menu li a:hover {
+            background-color: #3A3A3A;
+            color: #fff;
+        }
+        }
+
+/* Additional styles for the changing text and name */
+@font-face {
+            font-family: 'MyCustomFont'; /* Choose a unique font name */
+            src: url('fonts/myfont.ttf') format('truetype');
+            /* Add more src lines if you have other font files */
+        }
+
+#name {
+    color: #FBE7A1; /* Change this color to your desired color for your name */
+    font-family: 'MyCustomFont', Arial, sans-serif;
+    font-size: 50px; 
+    height: 24px; /* Set a fixed height to prevent the page from resizing */
+    width: 500px;
+
+    /* Replace 'MyCustomFont' with the font name you defined in the @font-face rule */
+    /* Arial and sans-serif are fallback fonts in case the custom font is not available */
+}
+
+.changing-text {
+    color: #00ff00; /* Change this color to your desired color for changing words */
+}
+
+/* Fixed width for the h1 element */
+
+
+.heading {
+
+    width: 300px; /* Set the desired width for the element */
+    text-align: left; /* Center the content horizontally */
+
+}
+
+/* Add custom positioning for the header text */
+.heading {
+    font-family: 'Helvatica';
+    position: relative;
+    top: -80px; /* Adjust this value to move the text up (negative value) or down (positive value) */
+    left: -0px; /* Adjust this value to move the text left (negative value) or right (positive value) */
+    width: 300px; /* Set the desired width for the h1 element */
+    text-align: left; /* Center the content horizontally */
+    margin: 0 auto; /* Center the element horizontally within its parent */
+}
+
+/* Adjust the container's height to accommodate the background image */
+.hero.overlay {
+    min-height: 100vh; /* Set the container's height to at least the viewport height */
+}
+
+/* Additional styles for the changing text and name */
+/* ... (your existing CSS code) */
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    .hero.overlay {
+        min-height: 100vh; /* Set the container's height to at least the viewport height */
+        display: flex; /* Use flexbox to center the content vertically and horizontally */
+        align-items: center;
+        justify-content: center;
+        background-color: #555; /* Faint blue padding color */
+        background-image: url('images/hero_11.jpg'); /* Set the background image */
+        background-size: contain; /* Use "contain" to fit the entire image within the container without cropping */
+        background-position: center center; /* Center the background image horizontally and vertically */
+        background-repeat: no-repeat; /* Prevent the background image from repeating */
+    }
+
+    /* Additional styles for the changing text and name */
+    #name {
+        color: #FBE7A1; /* Change this color to your desired color for your name */
+        font-family: 'MyCustomFont', Arial, sans-serif;
+        font-size: 30px;
+    }
+
+    .changing-text {
+        color: #00ff00; /* Change this color to your desired color for changing words */
+        font-size: 18px;
+        width: auto; /* Remove the fixed width to allow the text to adjust its width */
+        text-align: right; /* Center the content horizontally for mobile view */
+    }
+
+    /* Fixed width for the h1 element */
+    .heading {
+        width: 300px; /* Set the desired width for the element */
+        text-align: left; /* Center the content horizontally */
+    }
+
+    /* Add custom positioning for the header text */
+    .heading {
+        font-family: 'Helvatica';
+        position: relative;
+        top: -80px; /* Adjust this value to move the text up (negative value) or down (positive value) */
+        left: -0px; /* Adjust this value to move the text left (negative value) or right (positive value) */
+        width: 300px; /* Set the desired width for the h1 element */
+        text-align: left; /* Center the content horizontally */
+        margin: 0 auto; /* Center the element horizontally within its parent */
+    }
+}
+
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333; /* Set main background color to dark grey (#333) */
+    color: #fff; /* Set main text color to white */
+}
+
+.timeline {
+    margin: 50px auto;
+    max-width: 600px;
+}
+
+.item {
+     position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.circle {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--circle-color, #000); /* Darker color for the circle */
+    border: 4px solid #fff; /* White border around the circle */
+}
+
+.item:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -00px; 
+    transform: translateX(-50%);
+    width: 4px; /* Increase the width for a bolder line */
+    height: calc(100% + 40px); /* Adjust the height to cover the entire timeline area */
+    background-color: #555; /* Dark grey color for the center line */
+}
+
+.year {
+    font-size: 14px; /* Small font size */
+    background-color: var(--color, #f00); /* Dark purple color as default */
+    padding: 5px 8px; /* Add some padding to make it visually appealing */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.name {
+     font-size: 16px; /* Small font size */
+    background-color: var(--color, #f00); /* Dark purple color as default */
+    padding: 5px 10px; /* Adjust padding to keep it smaller */
+    border-radius: 10px; /* Rounded corners */
+    display: inline-block; /* Display the name as an inline block */
+    color: #000; /* Set text color to white */
+}
+
+.description {
+    /* No background color for the description */
+}
+
+    .image-stack {
+        position: relative;
+        display: flex;
+    }
+
+    .image-stack__item {
+        position: absolute;
+        border: 5px solid #ccc;
+        border-radius: 10px;
+    }
+
+
+
+    /* Hide photos in mobile view */
+@media (max-width: 767px) {
+    .image-stack__item {
+        display: none;
+    }
+}
+
+/* Skill Level Animation */
+
+ body {
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f3f3f3;
+    }
+
+    .skill-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f39ac4;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .skill-name {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* Animation on hover */
+    .skill:hover {
+      animation: bounce 0.5s;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    /* Media query for mobile view */
+    @media (max-width: 767px) {
+      .skill {
+        width: 90px;
+        height: 90px;
+        margin: 10px;
+      }
+    }
+
+    /* travel blogs*/
+
+
+
+
+/*VIDEOS*/
+
+
+
+/* Style the video player for desktop view */
+        video {
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 0 auto;
+            width: 640px; /* Adjust the width for desktop view */
+            height: 360px; /* Adjust the height for desktop view */
+            margin-left: 90%;
+        }
+
+        .video-heading {
+
+            margin-bottom: 20px; 
+            margin-top: 50px;
+            margin-left:80%;
+             width: 200%;
+        }
+
+        /* Media query for smaller screens (e.g., mobile devices) */
+        @media screen and (max-width: 768px) {
+            /* Adjust the video size for mobile view */
+            video {
+                width: 200%; /* Set the video width to 100% of its container */
+                height: auto; /* Set the video height to auto to maintain aspect ratio */
+                margin: 0 auto; /* Center the video horizontally */
+            }
+
+
+        }
+
+
+
+
+    }
+
+.col-lg-5 p {
+        font-size: 16px; /* Change the value to adjust the font size */
+    }
+
+.col-lg-5 h3{
+        font-size: 20px;
+}
+
+@media (min-width: 767px){
+.col-lg-5 h2.mobile-heading {
+        display: none;
+
+        /* Add any other styles specific to mobile headings here */
+    }
+}    
+
+/* For small screens (mobile) */
+@media (max-width: 767px) {
+    .col-lg-5 h2.desktop-heading {
+        display: none;
+    }
+    
+    .col-lg-5 h2.mobile-heading {
+        font-size: 18px;
+        margin-top: 70px;
+        margin-bottom: 0px;
+        /* Add any other styles specific to mobile headings here */
+    }
+}
+
+
+.py-5.bg-primary {
+        background-image: linear-gradient(black, #426e86);
+        text-transform: uppercase;
+        font-size: 24px;
+        padding: 20px;
+        border-radius: 10px;
+        color: #FFFFFF; /* White text color */
+        font-weight: bold;
+    }
+
+    .py-5.bg-primary h3 {
+        margin: 0;
+        width: 1000px;
+    }
+
+     @media (max-width: 768px) {
+        .py-5.bg-primary {
+            font-size: 18px;
+            padding: 15px;
+        }
+
+        .py-5.bg-primary h3 {
+        margin: 0;
+        font-size: 12px;
+        text-align: left;
+    }
+
+
+    }
+
+    /* Footer */
+
+    .site-footer {
+        background-color: #F0E8DF; /* Pastel beige background color */
+        padding: 50px 0;
+        color: #444444; /* Dark grey text color */
+    }
+
+    .site-footer h3 {
+        color: #9B7D78; /* Pastel brown heading color */
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .site-footer p {
+        font-size: 14px;
+    }
+
+    .site-footer address {
+        font-style: normal;
+    }
+
+    .site-footer .widget {
+        margin-bottom: 30px;
+    }
+
+    .site-footer .widget ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .site-footer .widget ul li {
+        margin-bottom: 10px;
+    }
+
+    .site-footer .widget ul li a {
+        color: #444444;
+    }
+
+    .site-footer .widget ul li a:hover {
+        color: #9B7D78;
+    }
+
+    .site-footer .widget ul.list-unstyled.links li a {
+        color: royalblue;
+    }
+
+     .site-footer .widget ul.list-unstyled.links li a:hover {
+        color: indianred; /* Change link color to red on hover */
+        font-size: 20px;
+    }
+
+    .site-footer .social li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .site-footer .social li a {
+        color: #9B7D78;
+        font-size: 18px;
+    }
+
+    .site-footer .social li a:hover {
+        color: #444444;
+    }
+
+    .site-footer .social li a.instagram-icon {
+        color: #F58AA5; /* Pastel pink color for Instagram */
+    }
+
+    .site-footer .social li a.instagram-icon:hover {
+        background-color: #F58AA5;
+        color: #fff; /* Slightly darker pastel pink on hover */
+        font-size: 24px;
+    }
+
+    .site-footer .social li a.envelope-icon {
+        color: #FFFFFF; /* White color for envelope icon */
+    }
+
+    .site-footer .social li a.envelope-icon:hover {
+        background-color: #fff;
+        color: indianred; /* Pastel orange on hover for envelope icon */
+        font-size: 24px;
+    }
+
+    .site-footer .social li a.linkedin-icon {
+        color: #7E9BBE; /* Pastel blue for LinkedIn icon */
+        
+    }
+
+    .site-footer .social li a.linkedin-icon:hover {
+        background-color: #7E9BBE ;
+        color: #fff; /* Slightly darker pastel blue on hover for LinkedIn icon */
+        font-size: 24px;
+    }

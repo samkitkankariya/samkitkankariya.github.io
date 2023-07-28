@@ -1,0 +1,441 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap5" />
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+	<link rel="stylesheet" href="css/tiny-slider.css">
+	<link rel="stylesheet" href="css/aos.css">
+	<link rel="stylesheet" href="css/flatpickr.min.css">
+	<link rel="stylesheet" href="css/glightbox.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<style>
+		      ul.menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        ul.menu li {
+            margin-right: 20px;
+        }
+
+        ul.menu li:last-child {
+            margin-right: 0;
+        }
+
+        ul.menu li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        ul.menu li a:hover {
+            background-color: darkturquoise;
+            color: #fff;
+        }
+
+          /* Center the buttons on larger screens (desktop mode) */
+        @media screen and (min-width: 768px) {
+            .site-navigation {
+                text-align: center;
+            }
+
+            ul.menu {
+                justify-content: center;
+            }
+
+            ul.menu li a:hover {
+            background-color: darkturquoise;
+            color: #fff;
+        }
+        }
+
+		.site-nav {
+        background-color: black; /* Change the background color of the navigation container */
+    }
+
+		/* Center the heading with a clean font */
+		.heading {
+			text-align: center;
+			font-family: "Your Clean Font Name", Arial, sans-serif;
+		}
+
+		/* Left-align the blog content with a clean font */
+		.blog-content {
+			text-align: left;
+			font-family: "Your Clean Font Name", Arial, sans-serif;
+		}
+
+
+
+		/* Right-align the photo captions */
+		.blog-content p {
+			text-align: justify;
+			font-size: 18px; /* Adjust the font size as needed */
+		}
+
+		/* Responsive images */
+	.blog-content p img {
+		display: block;
+		margin: 20px auto; /* Adjust the margin as needed */
+		max-width: 100%;
+		height: auto;
+
+	}
+
+	/* Media query for smaller screens (e.g., mobile devices) */
+	@media screen and (max-width: 768px) {
+		.blog-content p img {
+			max-height: 200px; /* Set a reduced height for smaller screens (adjust as needed) */
+		}
+
+		.blog-content p {
+			text-align: justify;
+			font-size: 15px; /* Adjust the font size as needed */
+		}
+
+	}
+
+		.btn {
+    text-transform: uppercase;
+    font-size: 18px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    color: #fff;
+    background-color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    color: white;
+    background-color: #3A3A3A;
+}
+
+/* Add spacing between the buttons */
+.btn:not(:last-child) {
+    margin-right: 50px;
+}
+
+		.py-5.bg-primary {
+        background-image: linear-gradient(black, #426e86);
+        text-transform: uppercase;
+        font-size: 24px;
+        padding: 20px;
+        border-radius: 10px;
+        color: #FFFFFF; /* White text color */
+        font-weight: bold;
+    }
+
+    .py-5.bg-primary h3 {
+        margin: 0;
+        width: 1000px;
+    }
+
+     @media (max-width: 768px) {
+        .py-5.bg-primary {
+            font-size: 18px;
+            padding: 15px;
+        }
+
+        .py-5.bg-primary h3 {
+        margin: 0;
+        font-size: 12px;
+        text-align: left;
+    }
+
+
+    }
+
+    /* Footer */
+
+    .site-footer {
+        background-color: #F0E8DF; /* Pastel beige background color */
+        padding: 50px 0;
+        color: #444444; /* Dark grey text color */
+    }
+
+    .site-footer h3 {
+        color: #9B7D78; /* Pastel brown heading color */
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .site-footer p {
+        font-size: 14px;
+    }
+
+    .site-footer address {
+        font-style: normal;
+    }
+
+    .site-footer .widget {
+        margin-bottom: 30px;
+    }
+
+    .site-footer .widget ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .site-footer .widget ul li {
+        margin-bottom: 10px;
+    }
+
+    .site-footer .widget ul li a {
+        color: #444444;
+    }
+
+    .site-footer .widget ul li a:hover {
+        color: #9B7D78;
+    }
+
+    .site-footer .widget ul.list-unstyled.links li a {
+        color: royalblue;
+    }
+
+     .site-footer .widget ul.list-unstyled.links li a:hover {
+        color: indianred; /* Change link color to red on hover */
+        font-size: 20px;
+    }
+
+    .site-footer .social li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .site-footer .social li a {
+        color: #9B7D78;
+        font-size: 18px;
+    }
+
+    .site-footer .social li a:hover {
+        color: #444444;
+    }
+
+    .site-footer .social li a.instagram-icon {
+        color: #F58AA5; /* Pastel pink color for Instagram */
+    }
+
+    .site-footer .social li a.instagram-icon:hover {
+        background-color: #F58AA5;
+        color: #fff; /* Slightly darker pastel pink on hover */
+        font-size: 24px;
+    }
+
+    .site-footer .social li a.envelope-icon {
+        color: #FFFFFF; /* White color for envelope icon */
+    }
+
+    .site-footer .social li a.envelope-icon:hover {
+        background-color: #fff;
+        color: indianred; /* Pastel orange on hover for envelope icon */
+        font-size: 24px;
+    }
+
+    .site-footer .social li a.linkedin-icon {
+        color: #7E9BBE; /* Pastel blue for LinkedIn icon */
+        
+    }
+
+    .site-footer .social li a.linkedin-icon:hover {
+        background-color: #7E9BBE ;
+        color: #fff; /* Slightly darker pastel blue on hover for LinkedIn icon */
+        font-size: 24px;
+    }
+
+	</style>
+
+	<title>Samkit Kankariya &mdash; Traveler </title>
+</head>
+<body>
+
+
+ <div class="site-nav mt-3">
+        <div class="container">
+            <div class="site-navigation">
+                <ul class="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#blog-section">Travel Blogs</a></li>
+                    <li><a href="index.html#video-section">Video Creations</a></li>
+                    <li><a href="index.html#about-section">About me</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+	
+	
+
+
+
+	<div class="section" >
+		<h1 class="heading" data-aos="fade-up">The Nights - Avicii</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 blog-content pe-5">
+
+					<!-- Insert "The View" photo here -->
+
+		<p>	<img src="images/rajgad_trek.jpg" alt="stars" style="max-width: 50%; height: auto;"/>
+		</p>
+					<div style="text-align: center; color: gray; font-family: 'Your Different Font Name', Arial">
+  					Image: Under the Stars ✨
+					</div>
+					<p>
+
+					</p>
+					<p>My first daring adventure was a spontaneous one. Two friends with no knowledge of the trail routes of the Rajgad fort, a torch, a bedsheet to sleep on (not even a tent), and pockets full of 'aaj kuch toofani karte hai wala' attitude went on a night trek.</p>
+
+<p>We climbed the fort in complete darkness as the moon was going to rise at 4 am. To be honest, it felt eerie, as even the rustling of leaves felt like there was someone coming from behind. We reached the fort with puffed lungs and growling stomach.</p>
+
+<p>The fort has a Padmavati temple and a pond below, but the actual top requires a 10-15 minute trek and a steep 80* climb. As we reached the temple, we saw people had set up there tents in front of temple and some had slept inside. We had our dinner inside the temple.</p>
+
+<p>Now, this is where it gets interesting. My friend said, 'Let's sleep here, but I wanted to go to the very top. We came out of the temple and started walking towards the top. Just as we pointed our torch into the stark darkness, we saw a pair of golden eyes. That scared the hell out of us. He said, 'Aik samkya, nako jayla, zopu apan ithech, and my reply was, "Kadhi tari maraychach aahe, aaj nahi tar udya.' On we went, half scared, half excited, and full of adrenaline rush.</p>
+
+<p>Once we reached the top, it felt like we had conquered the world, and the universe was celebrating this moment by decorating itself with a sky full of stars. That night we slept on the enormous mattress called Earth, under the starry blanket, watching the beauty of the cosmos unfold itself in the form of shooting stars passing by!! At that moment, it felt like I was watching the universe, but also I was the universe. On that night, we "lived" the song 'Nights' by Avicii, with each and every cell in my body resonating with the universe, singing 'these are the nights that never die...</p>
+
+<p>May this blog be a catalyst, a push that's needed for the daring adventure that's still pending in your bucket list because "One day, you'll leave this world behind. So live a life you will remember." </p>
+
+<p>p.s. To watch the stars in the background, full brightness is recommended on your screen and on your face. :)</p>
+
+  					<p>
+
+
+
+  					</p>
+					
+
+
+			</div>
+
+			<div class="text-center mt-4">
+    <a href="index.html" class="btn btn-primary rounded-pill px-4 py-2 mx-2">Home</a>
+    <a href="index.html#blog-section" class="btn btn-primary rounded-pill px-4 py-2 mx-2">More Blogs</a>
+</div>
+
+
+			<div class="py-5 bg-primary">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-7 text-center mb-3 mb-lg-0 text-lg-start">
+					<h3 class="text-white m-0" >To travel like a bird. To fly without limits. 🥂</h3>
+				</div>	
+			</div>		
+		</div>		
+	</div>
+
+					<!--
+				<div class="col-md-4 sidebar">
+					<div class="sidebar-box">
+						<form action="#" class="search-form">
+							<div class="form-group">
+								<span class="icon fa fa-search"></span>
+								<input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+							</div>
+						</form>
+					</div>
+					<div class="sidebar-box">
+						<div class="categories">
+							<h3>Categories</h3>
+							<li><a href="#">Creatives <span>(12)</span></a></li>
+							<li><a href="#">News <span>(22)</span></a></li>
+							<li><a href="#">Design <span>(37)</span></a></li>
+							<li><a href="#">HTML <span>(42)</span></a></li>
+							<li><a href="#">Web Development <span>(14)</span></a></li>
+						</div>
+					</div>
+					<div class="sidebar-box">
+						<img src="images/person_1.jpg" alt="Free Website Template by Free-Template.co" class="img-fluid mb-4 w-50 rounded-circle">
+						<h3 class="text-black">About The Author</h3>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+						<p><a href="#" class="btn btn-primary btn-md text-white">Read More</a></p>
+					</div>
+
+					<div class="sidebar-box">
+						<h3 class="text-black">Paragraph</h3>
+						<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+
+	
+	
+
+<div class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>Connect</h3>
+                    <ul class="list-unstyled social">
+                        <li><a href="#" class="instagram-icon"><span class="icon-instagram"></span></a></li>
+                        <li><a href="#" class="envelope-icon"><span class="icon-envelope"></span></a></li>
+                        <li><a href="#" class="linkedin-icon"><span class="icon-linkedin"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="widget">
+                    <h3>Contact</h3>
+                    <ul class="list-unstyled links mb-4">
+                        <li><a href="mailto:kankariyasamkit7@gmail.com">kankariyasamkit7@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <p class="mb-0">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by Samkit Kankariya
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+		<!-- Preloader -->
+		<div id="overlayer"></div>
+		<div class="loader">
+			<div class="spinner-border text-primary" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
+
+
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/tiny-slider.js"></script>
+		<script src="js/aos.js"></script>
+		<script src="js/navbar.js"></script>
+		<script src="js/counter.js"></script>
+		<script src="js/rellax.js"></script>
+		<script src="js/flatpickr.js"></script>
+		<script src="js/glightbox.min.js"></script>
+		<script src="js/custom.js"></script>
+	</body>
+	</html>
