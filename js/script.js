@@ -2,11 +2,33 @@
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
+// Toggle menu with click
 menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
+    toggleMenu();
 };
 
+// Toggle menu with keyboard (Enter or Space)
+menuIcon.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleMenu();
+    }
+});
+
+function toggleMenu() {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+    
+    // Set focus to the first nav link when opening the menu
+    if (navbar.classList.contains('active')) {
+        const firstNavLink = navbar.querySelector('a');
+        if (firstNavLink) {
+            setTimeout(() => {
+                firstNavLink.focus();
+            }, 100);
+        }
+    }
+}
 
 /*========== scroll sections active link ==========*/
 let sections = document.querySelectorAll('section');
@@ -40,6 +62,47 @@ navbar.classList.remove('active');
 
 };
 
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+    if (navbar.classList.contains('active') && 
+        !navbar.contains(event.target) && 
+        event.target !== menuIcon) {
+        menuIcon.classList.remove('bx-x');
+        navbar.classList.remove('active');
+    }
+});
+
+// Close menu when Escape key is pressed
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navbar.classList.contains('active')) {
+        menuIcon.classList.remove('bx-x');
+        navbar.classList.remove('active');
+        menuIcon.focus(); // Return focus to the menu button
+    }
+});
+
+// Handle "tab" key navigation in mobile menu
+navbar.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab' && navbar.classList.contains('active')) {
+        const focusableElements = navbar.querySelectorAll('a');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        
+        // If shift+tab on first element, move to menu icon
+        if (event.shiftKey && document.activeElement === firstElement) {
+            event.preventDefault();
+            menuIcon.focus();
+        }
+        
+        // If tab on last element and menu is open, close menu and move focus appropriately
+        if (!event.shiftKey && document.activeElement === lastElement) {
+            event.preventDefault();
+            menuIcon.classList.remove('bx-x');
+            navbar.classList.remove('active');
+            darkModeToggle.focus();
+        }
+    }
+});
 
 /*========== swiper ==========*/
 var swiper = new Swiper(".mySwiper", {
@@ -57,15 +120,113 @@ var swiper = new Swiper(".mySwiper", {
     },
 });
 
+/*============================================================================
+  DARK MODE FUNCTIONALITY
+  - Toggles between light and dark themes
+  - Uses localStorage to persist user preference
+  - Checks system preference using prefers-color-scheme
+  - Includes transition effect for smooth theme switching
+  - Supports keyboard accessibility
+============================================================================*/
 
-/*========== dark light mode ==========*/
-let darkModeIcon = document.querySelector('#darkMode-icon');
+// Get the dark mode toggle button
+let darkModeToggle = document.querySelector('#dark-mode-toggle-btn');
 
-darkModeIcon.onclick = () => {
-    darkModeIcon.classList.toggle('bx-sun');
-    document.body.classList.toggle('dark-mode');
+// Toggle dark mode when button is clicked
+darkModeToggle.onclick = () => {
+    toggleDarkMode();
 };
 
+// Support keyboard navigation (Enter and Space keys)
+darkModeToggle.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault(); // Prevent default space key scrolling
+        toggleDarkMode();
+    }
+});
+
+// Main function to toggle dark mode
+function toggleDarkMode() {
+    // Add a transition class to the body for smooth color/background transitions
+    document.body.classList.add('theme-transition');
+    
+    // Add a class for icon animation
+    darkModeToggle.classList.add('icon-transition');
+    
+    // Toggle the dark-mode class
+    document.body.classList.toggle('dark-mode');
+    
+    // Log the current theme state for testing
+    console.log('Theme changed to:', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+
+    // Store the user's preference in localStorage
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+        darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
+        // Dispatch an event that can be listened to by other components
+        document.dispatchEvent(new CustomEvent('themeChange', { detail: { theme: 'dark' } }));
+    } else {
+        localStorage.setItem('darkMode', 'disabled');
+        darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        // Dispatch an event that can be listened to by other components
+        document.dispatchEvent(new CustomEvent('themeChange', { detail: { theme: 'light' } }));
+    }
+
+    // Remove the transition classes after the transition is complete (300ms)
+    setTimeout(() => {
+        document.body.classList.remove('theme-transition');
+        darkModeToggle.classList.remove('icon-transition');
+    }, 300);
+}
+
+// Check for user's preferred color scheme
+const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Initialize theme based on user preference or system setting
+function initializeTheme() {
+    // Remove transition during initial load to prevent flash
+    document.body.classList.add('no-transition');
+    
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
+    } else if (localStorage.getItem('darkMode') === 'disabled') {
+        document.body.classList.remove('dark-mode');
+        darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
+    } else if (prefersDarkMode.matches) {
+        // If no preference is stored but system prefers dark mode
+        document.body.classList.add('dark-mode');
+        darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
+    }
+    
+    // Re-enable transitions after a small delay
+    setTimeout(() => {
+        document.body.classList.remove('no-transition');
+    }, 100);
+}
+
+// Call the initialization function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeTheme);
+
+// Listen for changes in system preference
+prefersDarkMode.addEventListener('change', (event) => {
+    // Only apply system preference if user hasn't set a preference
+    if (!localStorage.getItem('darkMode')) {
+        if (event.matches) {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+            darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+    }
+});
+
+/*============================================================================
+  REDUCED MOTION FUNCTIONALITY
+  - Checks if user has requested reduced motion in their system preferences
+  - Disables animations and transitions when reduced motion is preferred
+============================================================================*/
 
 /*========== scroll reveal ==========*/
 ScrollReveal({
@@ -79,3 +240,35 @@ ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
 ScrollReveal().reveal('.home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form', { origin: 'bottom' });
 ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
 ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
+
+/*========== Handle prefers-reduced-motion ==========*/
+// Check if the user has set prefers-reduced-motion
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+function disableAnimations() {
+    // Disable scroll animations
+    ScrollReveal().reveal = function() {};
+    
+    // Disable transition effects
+    const style = document.createElement('style');
+    style.innerHTML = `
+        * {
+            animation-duration: 0.001s !important;
+            transition-duration: 0.001s !important;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Apply on page load if needed
+if (prefersReducedMotion.matches) {
+    disableAnimations();
+}
+
+// Listen for changes to the prefers-reduced-motion setting
+prefersReducedMotion.addEventListener('change', (event) => {
+    if (event.matches) {
+        disableAnimations();
+    }
+    // No need to re-enable animations as it would require page reload
+});

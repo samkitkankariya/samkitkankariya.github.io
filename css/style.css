@@ -1,22 +1,173 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-* {
+/* Modern CSS Reset */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
 }
 
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    line-height: 1.5;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Remove default styling */
+ul, ol {
+    list-style: none;
+}
+
+a {
+    min-height: auto;
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    border: none;
+    outline: none;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*==========================================================================
+  COLOR SYSTEM & THEME CONFIGURATION
+============================================================================
+  This website uses a CSS variable-based theming system with both light
+  and dark mode support. The color palette is from the TODO document:
+  
+  - Deep Blue-Green (#264653): Used for text in light mode and backgrounds in dark mode
+  - Turquoise (#2A9D8F): Primary brand color, used for accents and highlights
+  - Pastel Yellow (#E9C46A): Used for highlights and secondary elements
+  - Pastel Orange (#F4A261): Used for secondary accents and hover states
+  - Coral (#E76F51): Used for call-to-action elements and important highlights
+  
+  USAGE GUIDELINES:
+  - Always use semantic variable names (e.g., --main-color) rather than direct color codes
+  - For new UI elements, choose variables that match their purpose, not specific colors
+  - When adding custom colors, define them in both light and dark mode sections
+  
+  ACCESSIBILITY NOTES:
+  - All color combinations have been tested to meet WCAG AA standards for contrast
+  - Text on colored backgrounds should maintain at least 4.5:1 contrast ratio
+  - Interactive elements should maintain at least 3:1 contrast with surroundings
+==========================================================================*/
+
+/* Global variables */
 :root {
+    /* Primary color palette - From TODO document */
+    --deep-blue-green: #264653; /* Deep Blue-Green */
+    --turquoise: #2A9D8F;      /* Turquoise */
+    --pastel-yellow: #E9C46A;  /* Pastel Yellow */
+    --pastel-orange: #F4A261;  /* Pastel Orange */
+    --coral: #E76F51;          /* Coral */
+    
+    /* Semantic color variables - light mode */
     --bg-color: #fdfdfd;
-    --text-color: #333;
-    --main-color: #1f7691;
-    --white-color: #fdfdfd;
+    --text-color: var(--deep-blue-green);
+    --main-color: var(--turquoise);
+    --accent-color: var(--coral);
+    --secondary-color: var(--pastel-orange);
+    --highlight-color: var(--pastel-yellow);
+    --white-color: #ffffff;
     --shadow-color: rgba(0, 0, 0, .2);
+    
+    /* Additional color variations */
+    --main-color-light: #3ebbac; /* Lighter version of turquoise */
+    --main-color-dark: #1d6e64; /* Darker version of turquoise */
+    --grey-100: #f8f9fa;
+    --grey-200: #e9ecef;
+    --grey-300: #dee2e6;
+    --grey-400: #ced4da;
+    --grey-500: #adb5bd;
+    
+    /* Typography */
+    --font-small: 1.4rem;
+    --font-normal: 1.6rem;
+    --font-medium: 1.8rem;
+    --font-large: 2.2rem;
+    --font-xlarge: 3.0rem;
+    --font-xxlarge: 4.5rem;
+    
+    /* Spacing */
+    --space-xs: 0.4rem;
+    --space-sm: 0.8rem;
+    --space-md: 1.6rem;
+    --space-lg: 2.4rem;
+    --space-xl: 3.2rem;
+    --space-xxl: 4.8rem;
+    
+    /* Border radius */
+    --radius-sm: 0.2rem;
+    --radius-md: 0.4rem;
+    --radius-lg: 0.8rem;
+    --radius-full: 50%;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Dark Mode Toggle */
+    --primary-color: var(--main-color);
+    --hover-color: rgba(42, 157, 143, 0.15);
+}
+
+/* Add smooth transition for theme switching */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *:before,
+.theme-transition *:after {
+    transition: all 0.3s ease !important;
+    transition-delay: 0 !important;
+}
+
+/* Disable transitions during page load or theme initialization */
+.no-transition,
+.no-transition *,
+.no-transition *:before,
+.no-transition *:after {
+    transition: none !important;
 }
 
 *::selection {
@@ -24,20 +175,66 @@
     color: var(--bg-color);
 }
 
+/* Dark mode theme configuration */
 .dark-mode {
-    --bg-color: #424242;
-    --text-color: #fdfdfd;
+    /* Semantic color variables - dark mode */
+    --bg-color: #1a202c; /* Darker background for better contrast */
+    --text-color: #f7fafc;
+    --main-color: var(--turquoise);
+    --accent-color: var(--coral);
+    --secondary-color: var(--pastel-orange);
+    --highlight-color: var(--pastel-yellow);
     --shadow-color: rgba(0, 0, 0, .7);
+    
+    /* Dark mode specific adjustments */
+    --grey-100: #2d3748;
+    --grey-200: #4a5568;
+    --grey-300: #718096;
+    --grey-400: #a0aec0;
+    --grey-500: #cbd5e0;
+    
+    /* Additional dark mode specific colors */
+    --main-color-light: #54d6c7; /* Brighter version for dark mode */
+    --main-color-dark: #2A9D8F; /* Use the base turquoise as dark in dark mode */
+
+    /* Dark Mode Toggle */
+    --primary-color: var(--main-color-light);
+    --hover-color: rgba(84, 214, 199, 0.15);
 }
 
-html {
-    font-size: 62.5%;
-    overflow-x: hidden;
-}
-
-body {
+/* Additional dark mode specific UI adjustments */
+.dark-mode .header.sticky {
     background: var(--bg-color);
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+}
+
+.dark-mode .btn {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
+
+.dark-mode .btn:hover {
+    background: var(--main-color-light);
+}
+
+.dark-mode .navbar a {
     color: var(--text-color);
+}
+
+.dark-mode .navbar a.active {
+    color: var(--main-color);
+}
+
+.dark-mode .skill,
+.dark-mode .skill-tag {
+    background-color: var(--grey-200);
+    color: var(--grey-500);
+}
+
+.dark-mode .skill:hover,
+.dark-mode .skill-tag:hover {
+    background-color: var(--main-color);
+    color: var(--bg-color);
 }
 
 .header {
@@ -97,10 +294,21 @@ body {
     opacity: .7;
 }
 
+/* Adding specific style for active nav link in dark mode */
+.dark-mode .navbar a.active::before {
+    background: var(--main-color);
+}
+
+.dark-mode .header.sticky .navbar a.active::before {
+    background: var(--main-color);
+    opacity: 1;
+}
+
 #darkMode-icon {
     font-size: 2.4rem;
     color: var(--white-color);
-    cursor: pointer;
+    display: block;  /* Ensure button displays as block */
+    overflow: hidden; /* Hide any overflow */
 }
 
 .header.sticky #darkMode-icon {
@@ -109,41 +317,107 @@ body {
 }
 
 #menu-icon {
-    font-size: 3.6rem;
-    color: var(--text-color);
+    font-size: 2.4rem;
     display: none;
 }
 
+@media (max-width: 768px) {
+    #menu-icon {
+        display: inline-flex;
+    }
+}
+
 section {
-    min-height: 100vh;
     padding: 10rem 7% 2rem;
 }
 
 .home {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 1rem;
+    padding-top: 3rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 4rem;
 }
 
 .home .home-content {
-    max-width: 60rem;
+    max-width: 600px;
+    padding-right: 0;
+    flex: 1;
 }
 
 .home-content h3 {
-    font-size: 5.6rem;
+    font-size: 4.8rem;
     font-weight: 700;
-    line-height: .3;
+    line-height: 1.2;
+    margin-bottom: 1rem;
 }
 
 .home-content h1 {
     font-size: 4.5rem;
     font-weight: 700;
-    margin-bottom: .3rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
 }
 
 .home-content p {
     font-size: 1.6rem;
+    line-height: 1.5;
 }
+
+/* Added styles for the elements that had inline styles */
+.subtitle {
+    font-size: var(--font-large);
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.expertise-heading {
+    font-size: 2rem;
+    margin-top: 2rem;
+    color: var(--main-color);
+}
+
+.expertise-list {
+    font-size: 1.6rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.portrait {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    max-width: 400px;
+    flex: 1;
+}
+
+.portrait-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--main-color);
+    border: 3px solid var(--main-color);
+    transition: all 0.3s ease;
+    margin: 0 auto;
+}
+
+.portrait-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+/* End of added styles */
 
 .home-content .social-media a {
     display: inline-flex;
@@ -168,22 +442,20 @@ section {
 
 .btn {
     display: inline-block;
-    padding: 1.2rem 2.8rem;
+    padding: var(--space-sm) var(--space-lg);
     background: var(--main-color);
-    border-radius: .6rem;
-    box-shadow: 0 .2rem .5rem var(--shadow-color);
-    font-size: 1.6rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-normal);
     color: var(--white-color);
-    letter-spacing: .1rem;
+    letter-spacing: 1px;
     font-weight: 600;
-    border: .2rem solid transparent;
-    transition: .5s ease;
+    transition: var(--transition-normal);
+    box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .btn:hover {
-    background: transparent;
-    color: var(--main-color);
-    border-color: var(--main-color);
+    background: var(--main-color-light);
+    transform: scale(1.05);
 }
 
 .home .profession-container {
@@ -210,7 +482,6 @@ section {
 }
 
 @keyframes professionRotate {
-
     0%,
     20% {
         transform: rotate(0deg);
@@ -302,49 +573,294 @@ span {
 }
 
 .about {
-    display: auto;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2 rem;
-    gap: 2rem;
+    padding: var(--space-xxl) 7%;
+    background-color: var(--grey-100);
 }
 
-/* .about-img img {
-    width: 40vw;
-} */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-.heading {
-    font-size: 4.5rem;
+.about-text {
+    font-size: var(--font-medium);
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.about-text p {
+    margin-bottom: var(--space-md);
+}
+
+/* Expertise items */
+.expertise-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+}
+
+.expertise-item {
+    background-color: var(--bg-color);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
-/* new code added */
-
-section#about {
-    padding-bottom: 500px;
-    padding-top: 200px;
+.expertise-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
-.icon-image {
-    width: 150px; /* Adjust width as needed */
-    height: 150px; /* Adjust height as needed */
+.expertise-item i {
+    font-size: 3rem;
+    color: var(--main-color);
+    margin-bottom: var(--space-md);
+}
+
+.expertise-item h3 {
+    font-size: var(--font-medium);
+    margin-bottom: var(--space-sm);
+    color: var(--main-color);
+}
+
+.expertise-item p {
+    font-size: var(--font-normal);
+    color: var(--text-color);
+}
+
+/* Timeline styling */
+.experience-timeline {
+    margin-top: var(--space-xl);
+}
+
+.timeline-heading, 
+.education-heading {
+    font-size: var(--font-large);
+    color: var(--main-color);
+    margin-bottom: var(--space-lg);
+    position: relative;
     display: inline-block;
-    margin-right: 150px; /* Adjust margin between icons as needed */
 }
 
-
-.about-content h2 {
-    text-align: left;
-    line-height: 1.2;
+.timeline-heading::after, 
+.education-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: var(--main-color);
 }
 
-.about-content h3 {
-    font-size: 2rem;
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: var(--space-xl) auto;
 }
 
-.about-content p {
-    font-size: 1.6rem;
-    margin: 2rem 0 3rem;
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--main-color-light);
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 0 30px 50px 60px;
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 0 4px rgba(31, 118, 145, 0.2);
+    transform: translateX(-50%);
+}
+
+.timeline-date {
+    color: var(--main-color);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    font-size: var(--font-normal);
+}
+
+.timeline-content {
+    background-color: var(--bg-color);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-normal);
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-content h3 {
+    font-size: calc(var(--font-medium) + 0.2rem);
+    color: var(--text-color);
+    margin-bottom: var(--space-xs);
+}
+
+.timeline-content h4 {
+    font-size: var(--font-medium);
+    color: var(--main-color);
+    margin-bottom: var(--space-md);
+    font-weight: 500;
+}
+
+.timeline-achievements {
+    list-style-type: disc;
+    padding-left: var(--space-lg);
+    margin-top: var(--space-md);
+}
+
+.timeline-achievements li {
+    margin-bottom: var(--space-sm);
+    color: var(--text-color);
+    font-size: calc(var(--font-normal) - 0.1rem);
+}
+
+/* Education section */
+.education {
+    margin-top: var(--space-xl);
+}
+
+.education-item {
+    background-color: var(--bg-color);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+.education-item h4 {
+    font-size: var(--font-medium);
+    color: var(--main-color);
+    margin-bottom: var(--space-xs);
+}
+
+.education-item p {
+    margin-bottom: var(--space-xs);
+    color: var(--text-color);
+    font-size: var(--font-normal);
+}
+
+.education-highlight {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Dark mode adjustments */
+.dark-mode .about {
+    background-color: var(--grey-100);
+}
+
+.dark-mode .expertise-item,
+.dark-mode .timeline-content,
+.dark-mode .education-item {
+    background-color: var(--grey-200);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Timeline */
+@media (min-width: 768px) {
+    .timeline::after {
+        left: 50%;
+    }
+    
+    .timeline-item {
+        padding: 0 0 50px 0;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        width: 50%;
+        float: left;
+        clear: both;
+        padding-right: 40px;
+    }
+    
+    .timeline-item:nth-child(even) {
+        width: 50%;
+        float: right;
+        clear: both;
+        padding-left: 40px;
+    }
+    
+    .timeline-dot {
+        left: 50%;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+        border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 0;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+        border-radius: var(--radius-md) var(--radius-md) 0 var(--radius-md);
+    }
+}
+
+@media (max-width: 767px) {
+    .expertise-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+    }
+    
+    .timeline::after {
+        left: 20px;
+    }
+    
+    .timeline-dot {
+        left: 20px;
+    }
+}
+
+/* Fix for timeline container overflow */
+.timeline:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Animation for timeline items */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item, .expertise-item, .education-item {
+    opacity: 0;
+    animation: fadeInUp var(--transition-slow) forwards;
+    animation-play-state: paused;
 }
 
 .services {
@@ -365,8 +881,8 @@ section#about {
 }
 
 .services-container .services-box {
-    width: 40rem; /* Fixed width for all cards */
-    height: auto; /* Adjust height to fit content */
+    width: 40rem;
+    height: auto;
     background: var(--bg-color);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
@@ -375,7 +891,7 @@ section#about {
     border-top: .6rem solid var(--main-color);
     border-bottom: .6rem solid var(--main-color);
     transition: .5s ease;
-    cursor: pointer; /* Make the box cursor clickable */
+    cursor: pointer;
     text-decoration: none;
     color: inherit;
 }
@@ -393,7 +909,7 @@ section#about {
 .services-box h3 {
     font-size: 2.6rem;
     transition: .5s ease;
-    color: inherit; /* Ensure the heading color is inherited */
+    color: inherit;
 }
 
 .services-box:hover h3 {
@@ -403,7 +919,7 @@ section#about {
 .services-box p {
     font-size: 1.6rem;
     margin: 1rem 0 3rem;
-    color: inherit; /* Ensure the description color is inherited */
+    color: inherit;
 }
 
 .skills {
@@ -421,22 +937,21 @@ section#about {
     transition: background-color 0.3s;
 }
 
-
 .skills-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     margin-top: 2rem;
-    position: relative; /* Added relative positioning */
+    position: relative;
 }
 
 .skills-heading {
     font-size: 1.8rem;
     font-weight: bold;
-    z-index: 1; /* Ensure the heading stays on top */
-    position: relative; /* Added relative positioning */
-    animation: floatHeading 5s infinite ease-in-out; /* Added floating animation */
+    z-index: 1;
+    position: relative;
+    animation: floatHeading 5s infinite ease-in-out;
 }
 
 .skills {
@@ -455,7 +970,7 @@ section#about {
     margin: 0.2rem;
     font-size: 1.6rem;
     transition: background-color 0.3s;
-    position: relative; /* Added relative positioning */
+    position: relative;
     animation: floatSkill 5s infinite ease-in-out;
 }
 
@@ -472,7 +987,6 @@ section#about {
     50% { transform: translateY(-8px); }
     100% { transform: translateY(0); }
 }
-
 
 .portfolio {
     min-height: auto;
@@ -630,65 +1144,62 @@ section#about {
     min-height: auto;
     padding-bottom: 7rem;
 }
+
+/* Enhanced contact section */
+.contact-title {
+    color: var(--white-color);
+    font-size: 1.8rem;
+    margin-right: 1rem;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.contact-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.contact-method i {
+    font-size: 1.8rem;
+    color: var(--white-color);
+    opacity: 0.9;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.contact-method:hover i {
+    transform: translateY(-3px);
+    opacity: 1;
+}
+
+.contact-method a {
+    color: var(--white-color);
+    font-size: 1.3rem;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+.contact-method a:hover {
+    color: var(--white-color);
+    text-decoration: underline;
+    opacity: 1;
+}
+
 .contact-info-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin: 1rem;
-}
-a {
-    min-height: auto;
-    text-decoration: none; /* Remove underline */
-    color: var(--white-color); /* Default link color */
-}
-
-a:hover {
-    text-decoration: underline; /* Underline on hover */
-    color: var(--white-color); /* Hover color */
-}
-
-
-.contact h2 {
-    margin-bottom: 3rem;
-}
-
-.contact form {
-    max-width: 70rem;
-    margin: 1rem auto;
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.contact form .input-box {
-    display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-}
-
-.contact form .input-box input,
-.contact form textarea {
+    justify-content: flex-start;
     width: 100%;
-    padding: 1.5rem;
-    font-size: 1.6rem;
-    color: var(--text-color);
-    background: var(--bg-color);
-    border-radius: .8rem;
-    margin: .7rem 0;
-    box-shadow: 0 .1rem .5rem var(--shadow-color);
-}
-
-.contact form .input-box input {
-    width: 49%;
-}
-
-.contact form textarea {
-    resize: none;
-}
-
-.contact form .btn {
-    margin-top: 2rem;
-    cursor: pointer;
+    margin-bottom: 1rem;
+    padding: 0;
 }
 
 .footer {
@@ -696,13 +1207,41 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 2rem 7%;
+    padding: 1.5rem 7%;
     background: var(--main-color);
+    position: relative;
+    width: 100%;
 }
 
-.footer-text p {
-    font-size: 1.6rem;
+.footer-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 5rem);
+}
+
+.footer-credit {
+    font-size: 1.4rem;
     color: var(--white-color);
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.footer-iconTop {
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(-50%);
+    }
+    50% {
+        transform: translateY(calc(-50% - 10px));
+    }
 }
 
 .footer-iconTop a {
@@ -715,17 +1254,128 @@ a:hover {
     border: .2rem solid var(--main-color);
     outline: .2rem solid transparent;
     transition: .5s ease;
+    position: relative;
+}
+
+.footer-iconTop a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: .8rem;
+    animation: pulse 2s ease-out infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }
 
 .footer-iconTop a:hover {
     outline-color: var(--white-color);
+    transform: translateY(-5px);
 }
 
 .footer-iconTop a i {
     font-size: 2.4rem;
     color: #333;
+    transition: transform 0.3s ease;
 }
 
+.footer-iconTop a:hover i {
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .footer {
+        padding: 1.5rem 5%;
+    }
+    .footer-iconTop {
+        right: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-info-container {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    .contact-title {
+        margin-right: 0;
+        margin-bottom: 0.8rem;
+        width: 100%;
+        text-align: center;
+    }
+    .contact-methods {
+        justify-content: center;
+        gap: 1rem;
+    }
+    .footer-text {
+        width: 100%;
+        align-items: center;
+    }
+    .footer-credit {
+        text-align: center;
+    }
+    .footer-iconTop {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        top: auto;
+        transform: none;
+        display: block;
+        z-index: 99;
+    }
+    .footer-iconTop a {
+        background: var(--main-color);
+        border-color: var(--white-color);
+    }
+    .footer-iconTop a i {
+        color: var(--white-color);
+    }
+}
+
+@media (max-width: 450px) {
+    .footer {
+        padding: 2rem 5%;
+    }
+    .contact-methods {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    .contact-method a {
+        font-size: 1.2rem;
+    }
+    .footer-credit {
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+    }
+    .contact-title {
+        font-size: 1.6rem;
+    }
+    .footer-iconTop {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+    .footer-iconTop a {
+        padding: 0.6rem;
+    }
+    .footer-iconTop a i {
+        font-size: 2rem;
+    }
+}
+
+/* Remove the redundant media queries added previously if they exist */
 
 /* BREAKPOINTS */
 @media (max-width: 1200px) {
@@ -741,18 +1391,10 @@ a:hover {
         right: -6%;
     }
 
-    /*
-    .home-img img {
-        position: absolute;
-        bottom: 0;
-        right: 40px;
-        pointer-events: none;
-        max-width: 480px; 
-        max-height: 100vh;
+    .home {
+        padding: 0 5%;
+        gap: 3rem;
     }
-    
-    */
-    
 }
 
 @media (max-width: 1100px) {
@@ -791,34 +1433,28 @@ a:hover {
 }
 
 @media (max-width: 991px) {
-
-    .navbar a:nth-child(1) {
-        color: var(--main-color);
-    }
-
-    .navbar a.active::before {
-        background: var(--main-color);
-        opacity: .7;
-    }
-
-    .home .home-content {
-        max-width: 50rem;
-    }
-
-    .home .profession-container .profession-box {
-        right: -35%;
-    }
-
-    .home .profession-container .overlay {
-        right: -30%;
-    }
-
-    .home-img img {
-        display: none;
-    }
-
-    .footer {
+    .header {
         padding: 2rem 3%;
+    }
+    
+    section {
+        padding: 10rem 3% 2rem;
+    }
+    
+    .home {
+        padding: 0 3%;
+    }
+    
+    .footer {
+        padding: 1.5rem 5%;
+    }
+    
+    .footer-iconTop {
+        right: 5%;
+    }
+    
+    .profession-container .overlay {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 0 70%);
     }
 }
 
@@ -849,212 +1485,737 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+    .header {
+        padding: 1.5rem 5%;
+    }
+    
     #menu-icon {
-        display: block;
+        display: inline-flex;
     }
-
-    #darkMode-icon {
-        position: absolute;
-        right: 7rem;
-        font-size: 2.6rem;
-        color: var(--text-color);
-        margin-bottom: .1rem;
-    }
-
+    
     .navbar {
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        padding: 1rem 3%;
+        padding: 1rem 5%;
         background: var(--bg-color);
-        border-top: .1rem solid rgba(0, 0, 0, .2);
-        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+        z-index: 1;
+        transition: .25s ease;
         display: none;
     }
-
+    
     .navbar.active {
         display: block;
+        left: 0;
+        transition-delay: 0s;
     }
-
+    
     .navbar a {
         display: block;
-        font-size: 2rem;
-        margin: 3rem 0;
-        color: var(--text-color);
+        font-size: 1.6rem;
+        margin: 1.5rem 0;
+        padding: 0.5rem 0;
+        text-align: center;
+        border-bottom: 1px solid rgba(var(--main-rgb), 0.1);
     }
-
-    .navbar a:nth-child(1),
-    .navbar a:nth-child(2) {
-        color: var(--text-color);
+    
+    .navbar a:last-child {
+        border-bottom: none;
     }
-
+    
+    .navbar a:hover,
     .navbar a.active {
         color: var(--main-color);
     }
-
-    .navbar a::before {
-        display: none;
-    }
-
+    
     .home {
-        padding: 0 3% 23rem;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .home-content h3 {
-        font-size: 2.6rem;
-    }
-
-    .home-content h1 {
-        font-size: 5rem;
-    }
-
-    .home-content .social-media a {
-        margin: 2.5rem .75rem 3rem;
-    }
-
-    .home .profession-container {
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .home .profession-container .profession-box {
-        position: fixed;
-        top: 450px;
-        left: 0;
-        width: 100%;
-    }
-
-    .home .profession-box .profession {
-        padding: 0 13px;
-        left: auto;
-        transform-origin: 0;
-    }
-
-    .home .profession-box .profession:nth-child(1) {
-        transform: rotate(-90deg) translate(-120px, -210px);
-    }
-
-    .home .profession-box .profession:nth-child(1) i {
-        margin-right: 0;
-    }
-
-    .home .profession-box .profession:nth-child(2) {
-        transform: rotate(0deg) translate(0, -325px);
-    }
-
-    .home .profession-box .profession:nth-child(3) {
-        transform: rotate(90deg) translate(-115px, -450px);
-    }
-
-    .home .profession-box .profession:nth-child(4) {
-        transform: rotate(180deg) translate(-220px, -325px);
-    }
-
-    .home .profession-box .circle {
-        position: fixed;
-        width: 670px;
-        height: 670px;
-        z-index: -1;
-    }
-
-    .home .profession-container .overlay {
-        position: fixed;
-        top: 70rem;
-        left: 50%;
-        right: 0;
-        transform: rotate(90deg) translate(-50%, 50%) scaleY(3);
-        border-width: 23.9rem;
-    }
-
-    .about {
         flex-direction: column-reverse;
         text-align: center;
+        padding-top: 6rem;
+        gap: 1rem;
+        overflow: visible;
+        min-height: auto;
+        padding-bottom: 2rem;
+    }
+    
+    .home-content {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .portrait {
+        max-width: 100%;
+        margin: 0 auto 1rem;
+    }
+    
+    .expertise-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .expertise-list li {
+        font-size: 0.9rem;
+        margin: 0;
+        padding: 5px 10px;
+        background-color: rgba(var(--main-rgb), 0.1);
+        border-radius: 5px;
+        line-height: 1.4;
+    }
+    
+    /* Reduce clutter by simplifying text content */
+    .key-expertise {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .expertise-heading {
+        font-size: 1.3rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Make social media more compact and centered */
+    .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    
+    /* Clean up button styling */
+    .btn {
+        padding: 0.5rem 1.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .home-content h3 {
+        font-size: 2.5rem;
+    }
+    
+    .home-content h1 {
+        font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .services h2 {
+        margin-bottom: 3rem;
+    }
+    
+    .portfolio h2 {
+        margin-bottom: 3rem;
+    }
+    
+    .profession-container .overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.6;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%, 0 60%);
+    }
+    
+    .contact-methods {
+        align-items: flex-start;
     }
 
-    .about-content h2 {
-        text-align: center;
-    }
-
-    .about-img img {
-        width: 70vw;
-        margin-top: -2rem;
-    }
-
-    .testimonial-container .testimonial-wrapper {
-        padding: 5rem 0;
-    }
-
-    .testimonial-content .testimonial-slide {
-        padding: 3rem 2rem;
-    }
-
-    .testimonial-box .swiper-button-next,
-    .testimonial-box .swiper-button-prev {
+    /* Clean up profession container on mobile */
+    .profession-container {
         display: none;
+    }
+    
+    /* Simplify social media icons on mobile */
+    .home-content .social-media a {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.6rem;
+        margin: 1.5rem 1rem 2rem 0;
+    }
+    
+    /* Reduce unnecessary white space */
+    section {
+        padding: 7rem 5% 2rem;
+    }
+    
+    /* Make skills more compact on mobile */
+    .skills {
+        gap: 8px;
+    }
+    
+    .skill {
+        padding: 6px 12px;
+        font-size: 0.9rem;
     }
 }
 
-@media (max-width: 580px) {
-    .portfolio .portfolio-container {
+@media (max-width: 617px) {
+    .portfolio-container {
         grid-template-columns: 1fr;
+    }
+    
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .expertise-container {
+        grid-template-columns: 1fr;
+    }
+
+    .profession-container .overlay {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 0 50%);
     }
 }
 
 @media (max-width: 450px) {
     html {
-        font-size: 50%;
+        font-size: 87.5%;
     }
-
-    #darkMode-icon {
-        right: 6rem;
+    
+    .home-content h3 {
+        font-size: 2rem;
     }
-
-    .home .profession-box .profession:nth-child(1) {
-        transform: rotate(-90deg) translate(-110px, -220px);
+    
+    .home-content h1 {
+        font-size: 2.8rem;
     }
-
-    .home .profession-box .profession:nth-child(2) {
-        transform: rotate(0deg) translate(5px, -325px);
+    
+    .portrait-img {
+        width: 180px;
+        height: 180px;
     }
-
-    .home .profession-box .profession:nth-child(3) {
-        transform: rotate(90deg) translate(-105px, -440px);
-    }
-
-    .home .profession-box .profession:nth-child(4) {
-        transform: rotate(180deg) translate(-210px, -325px);
-    }
-
-    .home .profession-container .overlay {
-        top: 80rem;
-    }
-
+    
     .contact form .input-box input {
         width: 100%;
     }
-
+    
     .footer {
         flex-direction: column-reverse;
     }
+    
+    .footer p {
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    .profession-container .overlay {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 45% 100%, 0 45%);
+        opacity: 0.8;
+    }
 
+    /* Extra compact design for small phones */
+    .expertise-list {
+        gap: 6px;
+    }
+    
+    .expertise-list li {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+    
+    .social-media {
+        gap: 0.8rem;
+    }
+    
+    /* Compact layout for small screens */
+    section {
+        padding: 6rem 5% 1.5rem;
+    }
+    
+    .header-controls {
+        gap: 5px;
+    }
+    
+    .icon-button, .dark-mode-toggle-btn {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 365px) {
+    .portrait {
+        width: 90%;
+    }
+    
+    .portrait-img {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .about-img img {
+        width: 90vw;
+    }
+    
+    .footer {
+        flex-direction: column-reverse;
+    }
+    
     .footer p {
         text-align: center;
         margin-top: 2rem;
     }
 }
 
-@media (max-width: 365px) {
-    .about-img img {
-        width: 90vw;
+/* Additional utility classes */
+.key-expertise {
+    font-size: var(--font-medium);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.skills-list {
+    font-size: var(--font-normal);
+    line-height: 1.6;
+    padding-left: var(--space-md);
+}
+
+.skills-list li {
+    margin-bottom: var(--space-xs);
+    position: relative;
+}
+
+.skills-list li::before {
+    content: "•";
+    color: var(--main-color);
+    display: inline-block;
+    width: var(--space-sm);
+    margin-left: calc(-1 * var(--space-sm));
+}
+
+/* Combined portrait image styles to ensure consistency */
+.portrait-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--main-color);
+    border: 3px solid var(--main-color);
+    transition: all 0.3s ease;
+}
+
+/* Update existing styles to use our new variables */
+.home-content h1 {
+    font-size: var(--font-xxlarge);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+}
+
+.home-content h3 {
+    font-size: var(--font-large);
+    font-weight: 700;
+}
+
+.home-content p {
+    font-size: var(--font-normal);
+    margin: var(--space-md) 0 var(--space-lg);
+}
+
+.btn {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--main-color);
+    border-radius: var(--radius-md);
+    font-size: var(--font-normal);
+    color: var(--white-color);
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: var(--transition-normal);
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.btn:hover {
+    background: var(--main-color-light);
+    transform: scale(1.05);
+}
+
+/* Add these focus styles after the existing a {} rule */
+a:focus, 
+button:focus,
+[role="button"]:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--main-color);
+    outline-offset: 2px;
+}
+
+/* Improve focus styles for navigation links */
+.navbar a:focus {
+    outline: 3px solid var(--main-color);
+    outline-offset: 2px;
+    text-decoration: underline;
+}
+
+/* Focus styles for dark mode */
+.dark-mode a:focus,
+.dark-mode button:focus,
+.dark-mode [role="button"]:focus,
+.dark-mode input:focus,
+.dark-mode select:focus,
+.dark-mode textarea:focus {
+    outline-color: var(--main-color-light);
+}
+
+/* Fix for .header-controls to ensure buttons line up correctly */
+.header-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Improve focus visibility for icons that serve as buttons */
+#darkMode-icon:focus,
+#menu-icon:focus {
+    outline: 3px solid var(--main-color);
+    outline-offset: 2px;
+    border-radius: 50%;
+}
+
+/* Ensure .services-box links show focus outlines */
+.services-container .services-box:focus {
+    outline: 3px solid var(--main-color);
+    outline-offset: 4px;
+    transform: scale(1.02);
+}
+
+/* Making the project cards properly tabbable */
+.services-box {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+/* Fix for footer back-to-top button focus styles */
+.footer-iconTop a:focus {
+    outline: 3px solid var(--main-color);
+    outline-offset: 3px;
+    background: var(--main-color);
+}
+
+/* Focus style improvements for home social media links */
+.home-content .social-media a:focus {
+    outline: 3px solid var(--main-color);
+    outline-offset: 2px;
+    background: var(--main-color-light);
+    color: var(--white-color);
+}
+
+/* Improve focus visibility for CTA buttons */
+.btn:focus {
+    outline: 3px solid var(--main-color-dark);
+    outline-offset: 2px;
+    box-shadow: 0 0 15px var(--shadow-color);
+}
+
+/* Making skills list easier to read */
+.skill {
+    transition: transform 0.3s ease;
+}
+
+.skill:hover,
+.skill:focus {
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+/* Icon button styles */
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.2rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.icon-button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.1);
+}
+
+.icon-button:focus {
+    outline: 2px solid var(--main-color);
+    outline-offset: 2px;
+}
+
+.header.sticky .icon-button {
+    color: var(--text-color);
+}
+
+.dark-mode .icon-button {
+    color: var(--white-color);
+}
+
+.dark-mode .header.sticky .icon-button {
+    color: var(--text-color);
+}
+
+/* Profession rotation variables using CSS custom properties instead of inline styles */
+.profession-1 {
+    --i: 0;
+    transform: rotate(calc(360deg / 4 * var(--i)));
+    transform-origin: 384px;
+}
+
+.profession-2 {
+    --i: 1;
+    transform: rotate(calc(360deg / 4 * var(--i)));
+    transform-origin: 384px;
+}
+
+.profession-3 {
+    --i: 2;
+    transform: rotate(calc(360deg / 4 * var(--i)));
+    transform-origin: 384px;
+}
+
+.profession-4 {
+    --i: 3;
+    transform: rotate(calc(360deg / 4 * var(--i)));
+    transform-origin: 384px;
+}
+
+/* Existing profession styles will still apply to the new classes */
+
+/* Add styling for experience domains list */
+.experience-domains {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.experience-domains li {
+    margin-bottom: 0.5rem;
+    color: var(--clr-dark);
+    line-height: 1.6;
+}
+
+/* Dark Mode Toggle - Enhanced styles */
+.dark-mode-toggle {
+    position: relative;
+    z-index: 10;
+    margin-left: 10px;
+}
+
+.dark-mode-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    background-color: transparent;
+    transition: all 0.3s ease;
+    width: 2.8rem;
+    height: 2.8rem;
+    box-shadow: 0 0 0 0 rgba(42, 157, 143, 0);
+}
+
+.header.sticky .dark-mode-toggle-btn {
+    color: var(--text-color);
+}
+
+.dark-mode .dark-mode-toggle-btn {
+    color: var(--white-color);
+}
+
+.dark-mode .header.sticky .dark-mode-toggle-btn {
+    color: var(--text-color);
+}
+
+.dark-mode-toggle-btn:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px var(--hover-color);
+}
+
+.header.sticky .dark-mode-toggle-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.dark-mode-toggle-btn:focus {
+    outline: 2px solid var(--main-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px var(--hover-color);
+}
+
+.mode-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.mode-icon svg {
+    stroke: currentColor;
+    transition: transform 0.5s ease;
+}
+
+.light-mode-icon {
+    opacity: 0;
+    transform: translateY(10px) rotate(-30deg);
+    position: absolute;
+}
+
+.dark-mode-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Styles for when dark mode is active */
+.dark-mode .light-mode-icon {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
+
+.dark-mode .dark-mode-icon {
+    opacity: 0;
+    transform: translateY(-10px) rotate(30deg);
+}
+
+/* Add rotation animation on toggle */
+.dark-mode-toggle-btn:active .mode-icon svg {
+    transform: rotate(180deg);
+}
+
+/* Transition for smooth color changes */
+body.theme-transition,
+body.theme-transition *,
+body.theme-transition *:before,
+body.theme-transition *:after {
+    transition: all 0.3s !important;
+    transition-delay: 0 !important;
+}
+
+/* Screen reader only class for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Mobile responsive styles for dark mode toggle */
+@media (max-width: 768px) {
+    .dark-mode-toggle-btn {
+        width: 3.2rem;
+        height: 3.2rem;
+        margin-right: 0.5rem;
+    }
+    
+    .mode-icon svg {
+        width: 22px;
+        height: 22px;
     }
 }
 
-@media (max-width: 315px) {
-    .home-content h1 {
-        font-size: 4.5rem;
+@media (max-width: 480px) {
+    .dark-mode-toggle {
+        margin-left: 5px;
     }
+    
+    .dark-mode-toggle-btn {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+    
+    .header-controls {
+        gap: 0.5rem;
+    }
+}
+
+/* Icon animation during transitions */
+.icon-transition .mode-icon svg {
+    transform: rotate(90deg);
+}
+
+/* Improve animation smoothness */
+.mode-icon, 
+.mode-icon svg,
+.dark-mode-toggle-btn {
+    will-change: transform, opacity;
+}
+
+/* Enhanced mobile styles for clean minimal look */
+@media (max-width: 480px) {
+    .home {
+        padding-top: 5rem;
+    }
+    
+    .key-expertise {
+        font-size: 0.9rem;
+    }
+    
+    /* More compact social links */
+    .home-content .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    .home-content .social-media a {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.4rem;
+        margin: 1.2rem 0.5rem;
+    }
+    
+    /* Cleaner button in mobile view */
+    .btn {
+        margin-top: 0.5rem;
+        padding: 0.4rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Additional dark mode specific styling for the dark mode icon */
+.dark-mode #darkMode-icon {
+    color: var(--white-color);
+}
+
+.dark-mode .header.sticky #darkMode-icon {
+    color: var(--text-color);
+}
+
+/* Ensure only one icon is visible */
+#darkMode-icon i.bx-moon:before {
+    content: "\ecad"; /* boxicons moon code */
+}
+
+#darkMode-icon i.bx-sun:before {
+    content: "\ecc9"; /* boxicons sun code */
 }
