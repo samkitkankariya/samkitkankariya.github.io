@@ -325,6 +325,151 @@ body {
     #menu-icon {
         display: inline-flex;
     }
+    
+    /* Reduce About Me text size */
+    .about-text p {
+        font-size: 1.4rem;
+        line-height: 1.4;
+    }
+    
+    .experience-domains li {
+        font-size: 1.3rem;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Reduce Professional Journey text size */
+    .timeline-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 1.3rem;
+    }
+    
+    .timeline-achievements li {
+        font-size: 1.2rem;
+        line-height: 1.3;
+        margin-bottom: 0.4rem;
+    }
+    
+    /* Reduce Projects section text size */
+    .services-box h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .services-box p {
+        font-size: 1.3rem;
+        line-height: 1.4;
+    }
+    
+    .skill-tag {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.6rem;
+        margin: 0.2rem;
+    }
+    
+    /* Expertise items in About section */
+    .expertise-item h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .expertise-item p {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+    
+    /* Improve section spacing */
+    section {
+        padding: 3rem 3% 1.5rem;
+    }
+    
+    .heading {
+        margin-bottom: 2rem;
+        font-size: 2.2rem;
+    }
+    
+    /* Timeline improvements */
+    .timeline-item {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .timeline-date {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Project card spacing */
+    .services-container {
+        grid-gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further reduce text on smaller devices */
+    .about-text p {
+        font-size: 1.3rem;
+        line-height: 1.3;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.4rem;
+    }
+    
+    .timeline-content h4 {
+        font-size: 1.2rem;
+    }
+    
+    .timeline-achievements li {
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+    
+    .services-box h3 {
+        font-size: 1.4rem;
+    }
+    
+    .services-box p {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+    
+    /* Adjust spacing */
+    .expertise-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .services-box {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Further improve section spacing */
+    section {
+        padding: 2.5rem 3% 1rem;
+    }
+    
+    .heading {
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+    }
+    
+    /* Card improvements */
+    .services-box,
+    .expertise-item,
+    .timeline-content {
+        border-radius: 8px;
+    }
+    
+    /* Improve skill tags display */
+    .skills {
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+    }
 }
 
 section {
