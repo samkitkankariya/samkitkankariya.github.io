@@ -1,0 +1,156 @@
+Tasks based on the TODO document:
+
+
+## 1. **Current UI/UX & Responsiveness Issues**
+
+### Home Page
+- **Image Issue on Mobile:** The portrait image is cut off or disappears on smaller screens due to `display: none` in media queries.
+- **Text Alignment:** On mobile, text and image overlap or stack awkwardly.
+- **Lack of Animation:** Only basic scroll reveal; no hero animation, parallax, or interactive elements.
+- **Social Icons:** Could be larger, animated, or have tooltips.
+
+### Skills Page
+- **Skills Tags:** Good, but could be more visually dynamic (hover, pop, or animated in).
+- **Section Spacing:** On mobile, tags can overflow or become cramped.
+- **No Filtering/Grouping:** Could allow filtering by skill type or animated grouping.
+
+### Projects Page
+- **Cards:** Good structure, but could use hover effects, animated entry, and clickable overlays.
+- **Mobile Layout:** Cards stack, but spacing and padding could be improved.
+- **No Project Modal:** Clicking a project could open a modal with more info/screenshots.
+- **No Project Filtering:** Could add filtering by tech/area.
+
+### Footer
+- **Simple:** Could add animated icons, a “back to top” button, or a mini contact form.
+
+---
+
+## 2. **Enhancement & Modernization Plan**
+
+### General
+- **Make Fully Responsive:** Refactor CSS grid/flex for all breakpoints, especially for the home image and project cards.
+- **Add Animations:** Use more ScrollReveal, animate skill tags, add hero text animation, and interactive hover effects.
+- **Improve Accessibility:** Add alt text, ARIA labels, and keyboard navigation.
+- **Dark Mode Polish:** Ensure all elements look great in both modes.
+
+### Home
+- **Hero Animation:** Animate your name and tagline on load.
+- **Image:** Use a circular or soft-shadowed portrait, always visible and centered on mobile.
+- **Social Icons:** Animate on hover, add tooltips.
+- **Add “About Me” Button:** Scrolls to a new About section or modal.
+
+### Skills
+- **Animated Skill Tags:** Pop in, float, or pulse on hover.
+- **Filter/Group:** Allow toggling between skill groups.
+- **Progress Bars or Ratings:** For top skills, show proficiency visually.
+
+### Projects
+- **Animated Cards:** Fade/slide in, scale on hover.
+- **Clickable Modal:** Clicking a project opens a modal with more details, images, and links.
+- **Filter by Tech:** Buttons to filter projects by technology.
+- **Add “Featured” Badge:** For top projects.
+
+### Footer
+- **Animated Icons:** Social/contact icons animate on hover.
+- **Back to Top:** Smooth scroll button.
+- **Mini Contact Form:** Optional, for direct messages.
+
+### New Page/Section Ideas
+- **About Me Page/Section:** More personal story, timeline, or fun facts.
+- **Testimonials:** Add back the testimonial carousel.
+- **Blog/Articles:** If you write, add a blog section.
+- **Download Resume Button:** Prominent and animated.
+
+---
+
+## 3. **Next Steps & What I Need**
+
+- **Do you want a dedicated About Me section or page?**
+- **Would you like a modal popup for project details, or a separate project details page?**
+- **Do you want a blog/articles section?**
+- **Any color palette or style inspiration you want to follow?**
+
+---
+
+## 4. **Immediate Fixes & Upgrades (To Be Implemented Next)**
+
+- Refactor the home image for perfect mobile display (centered, circular, always visible).
+- Add hero text animation and social icon effects.
+- Animate skill tags and improve mobile layout.
+- Add project card hover/entry animation and prepare for modal details.
+- Polish footer with animated icons and a back-to-top button.
+- Ensure all pages are fully responsive and beautiful on any device.
+
+---
+
+**Let me know your preferences for About, project modals, and any extra sections. Once you confirm, I’ll start implementing these upgrades step by step for a world-class, modern, and mobile-friendly portfolio!**
+
+---
+
+Perfect! Here’s the plan based on your feedback and best practices for a world-class, modern, and mobile-friendly portfolio:
+
+---
+
+## 1. **About Me Section**
+- **Approach:** Add a dedicated “About Me” section (not a separate page, but a prominent section after the hero).
+- **Content:** Highlight your current company (Viamagus) and key skills/achievements:
+  - Intelligent document processing with Vision LLMs
+  - Multi-agent AI systems (task delegation, sub-agents, MCPs)
+  - Agentic memory, RAG, RAGAS, fine-tuning (UnslothAI)
+  - Contract analysis, open-source LLM deployment, technical demos
+- **Style:** Use icons, subtle animation, and a timeline or “highlight cards” for achievements.
+
+---
+
+## 2. **Experience Page**
+- **Approach:** Since you have one main company, integrate “Experience” as a section within “About Me” (timeline or card style). If you add more jobs later, it can become a full page.
+
+---
+
+## 3. **Project Details Modal**
+- **Approach:** Use a modal popup for project details (with images, tech stack, and links). 
+- **Mobile:** The modal will be fully responsive—on mobile, it will slide up from the bottom, be scrollable, and have a clear close button.
+
+---
+
+## 4. **Blog/Articles Section**
+- **Approach:** Add a “Blog” or “Articles” page/section.
+- **Content:** Start with 2 articles based on your `TECH_NOTES.md` (Jinja2 Templating, and a combined “Frameworks & LLM Integration” article).
+- **Style:** Card-based, animated entry, with a modal or dedicated article page for each.
+
+---
+
+## 5. **Color Palette & Theming**
+- **Palette:** Use your provided palette:
+  - #264653 (Deep Blue-Green)
+  - #2A9D8F (Turquoise)
+  - #E9C46A (Pastel Yellow)
+  - #F4A261 (Pastel Orange)
+  - #E76F51 (Coral)
+- **Config:** Centralize colors in CSS variables for easy palette swaps.
+- **Dark Mode:** Carefully tune for contrast and vibrancy in both modes.
+
+---
+
+## 6. **Other Upgrades**
+- **Animations:** Animate hero text, skill tags, project cards, and section reveals.
+- **Image Handling:** Home image will be circular, always visible, and perfectly centered/scaled on all screens.
+- **Accessibility:** Add alt text, ARIA labels, and keyboard navigation.
+- **Footer:** Add animated icons, back-to-top, and a mini contact form.
+- **Responsiveness:** Every section will be tested and tuned for all device sizes.
+
+---
+
+## 7. **Next Steps**
+1. Refactor color palette and theme config.
+2. Add About Me section with experience highlights.
+3. Upgrade home image and hero animation.
+4. Animate and improve skills section.
+5. Add project modal with mobile support.
+6. Add blog/articles section with 2 articles.
+7. Polish footer and add contact form.
+8. Test and tune for mobile, accessibility, and dark mode.
+
+---
+
+**If you have any more inspirations (websites you love, animation styles, etc.), let me know now! Otherwise, I’ll start implementing these upgrades step by step.**

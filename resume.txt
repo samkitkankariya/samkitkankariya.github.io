@@ -1,0 +1,117 @@
+Samkit Kankariya
+
+samkit.jk@gmail.com ❖ +91 9561111241 ❖ Pune, MH ❖ GitHub, LinkedIn
+EDUCATION
+Sinhgad College of Engineering, Pune, MH​
+B. E. Information Technology​
+​
+​
+
+​
+​
+
+​
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+2017 - 2021
+
+​
+
+​
+
+CGPA: 9.5/10
+
+WORK EXPERIENCE
+Python & Generative AI Engineer (Viamagus, Bengaluru - Remote)​ ​
+​
+​
+​
+July. 2024 – Present
+▪​ Led the development of an intelligent document processing system integrating Vision LLMs within an agentic framework;
+achieved 2x accuracy improvements over traditional OCR by employing context-aware analysis, iterative data validation,
+and human-in-the-loop integration, reducing turnaround times by 80%.
+▪​ Architected and built a scalable production level multi-agent AI system, incorporating task delegation (sub-agents), diverse
+tool utilization (MCPs), and persistent agentic memory, enabling autonomous execution of complex workflows.
+▪​ Significantly improved AI workflow: Restructured the intent classification system, leading to a 50% increase in chatbot
+accuracy and a 15% reduction in response times.
+▪​ Fine-tuned Vision LLM model using UnslothAI, achieving 20% accuracy improvement through advanced training
+techniques.
+▪​ Developed robust RAG Evaluation Framework: Implemented RAGAS and other metrics, resulting in a 30% increase in
+retrieval efficiency and improved model performance.
+▪​ Engineered a contract analysis feature with automated comment generation, reducing manual legal review time by 20%.
+▪​ Deployed open-source LLM models (Hugging Face) on local servers with FastAPI, implementing efficient inference pipelines.
+▪​ Effectively communicated technical capabilities and business value to clients through technical demos.
+▪​ Conducted in-depth R&D on 7+ advanced Complex RAG models to select the optimal architecture for the agentic framework.
+▪​ Contributed to team expansion by conducting 8 technical interviews for Gen AI specific roles.
+Co-founder (ImmuniBoost Homemade Dry Fruit Ladoos)​
+​
+​
+​
+​
+​
+Dec. 2023 – Feb. 2024
+▪​ Founded an online venture demonstrating:
+Digital entrepreneurship skills, e-commerce platform integration, business strategy and market understanding
+Business Associate (Kankariya Pashukhadya, Patoda, MH)​ ​
+​
+​
+​
+​
+Apr. 2023 – Apr. 2024
+▪​ Developed strong communication, leadership and client-handling skills along with decision-making & business acumen.
+Trader (Stock Markets - Equity, F&O)​
+
+​
+​
+PROJECTS
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+Jun. 2020 – Apr. 2023
+
+​
+
+Genius LangGraph - Advanced AI Research Agent [LangGraph, LangChain, Pinecone, SerpAPI]
+▪​ Built an agent that iteratively uses multiple tools (web search, academic databases, arXiv) to gather and synthesize
+information on complex topics, compounding findings to generate comprehensive reports with minimal human input.
+Langchain Agents - Dynamic Information Retrieval [Langchain, RAG, LLMs, FAISS]
+▪​ Implemented Langchain agents using OpenAI API, integrating wiki and google search for dynamic information retrieval
+▪​ Created custom retrieval tools and utilized vector databases to implement Retrieval-Augmented Generation (RAG)
+Goodreads Book Assistant Telegram Bot [Langchain, LLMs, Web Scraping, API, SQL]
+▪​ Created a bot that scrapes data from Goodreads, allowing book searches and delivering daily quotes through Telegram API.
+▪​
+Stored user-specific book lists in a database, integrated LLM using Langchain for personalized book recommendations.
+
+CERTIFICATIONS, SKILLS
+Certifications: Almabetter Full Stack Data Science
+Gen AI: Langchain, LangGraph, Agents, LLMs, Vision LLMs (VLMs), RAG, Fine-tuning (LoRA, UnslothAI), VectorDB (Qdrant,
+Pinecone, FAISS), RAG Eval (RAGAS), NLP
+Programming Languages: Python, SQL, PostgreSQL, C, html/css
+Tools & Frameworks: FastAPI, MCPs, Redis, Git, Streamlit, Docker, Hugging Face Transformers, UnslothAI
+Other: Prompt Engineering, Problem Solving, Web Scraping, Data Wrangling, Complex System Design, Model Deployment
+INTERESTS
+Interests: solo traveling; reading-fiction, thriller; stargazing; tv show- the good doctor
+
+

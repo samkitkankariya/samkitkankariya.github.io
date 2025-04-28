@@ -1,0 +1,59 @@
+<context>
+# Overview
+A modern, world-class AI engineer portfolio website for Samkit Kankariya. The site showcases expertise in GenAI, LLMs, agentic systems, and project highlights. It is fully responsive, visually stunning, and optimized for both desktop and mobile. The site is a personal brand hub, resume, and technical showcase.
+
+# Core Features
+- Hero section with animated intro, circular portrait, and social links
+- About Me section with experience highlights (Viamagus, agentic systems, LLM finetuning, RAG, MCPs, etc.)
+- Skills section with animated, filterable skill tags and proficiency bars
+- Projects section with animated cards, modal popups for details, and tech filtering
+- Blog/Articles section (with at least 2 articles from TECH_NOTES.md)
+- Footer with animated icons, back-to-top, and mini contact form
+- Fully responsive and mobile-first design
+- Centralized color palette config (with pastel palette and dark mode support)
+- Accessibility: alt text, ARIA labels, keyboard navigation
+- Smooth scroll, section reveal, and interactive effects throughout
+
+# User Experience
+- Target: recruiters, collaborators, and AI/tech enthusiasts
+- Flows: browse intro, learn about background, explore skills/projects, read articles, contact
+- UI/UX: clean, pastel color palette (#264653, #2A9D8F, #E9C46A, #F4A261, #E76F51), modern typography, subtle gradients, micro-animations, and clear CTAs
+</context>
+<PRD>
+# Technical Architecture
+- HTML5, CSS3 (with CSS variables for palette), JavaScript (vanilla, with ScrollReveal, Swiper, etc.)
+- Responsive grid/flex layouts for all sections
+- Modal system for project/blog details (mobile-friendly)
+- Blog/article content as markdown or HTML in codebase
+- Color palette config in :root and .dark-mode CSS
+- Accessibility: semantic HTML, ARIA, alt text
+
+# Development Roadmap
+- Phase 1: Color palette refactor, theme config, and dark mode polish
+- Phase 2: Home/hero section upgrade (animation, image, social)
+- Phase 3: About Me/Experience section (timeline/cards, icons)
+- Phase 4: Skills section (animated tags, filter, proficiency bars)
+- Phase 5: Projects section (animated cards, modal, filtering)
+- Phase 6: Blog/articles section (2 articles, modal/page)
+- Phase 7: Footer/contact, accessibility, polish, and QA
+
+# Logical Dependency Chain
+- Start with palette/theme config (foundation for all styling)
+- Upgrade home/hero (first impression)
+- Add About/Experience (context)
+- Enhance skills (showcase expertise)
+- Build projects (showcase work)
+- Add blog/articles (thought leadership)
+- Footer/contact and polish last
+
+# Risks and Mitigations
+- Mobile image scaling: use CSS aspect-ratio, object-fit, and media queries
+- Modal on mobile: test for scroll, close, and accessibility
+- Animation performance: use lightweight libraries and limit excessive effects
+- Color contrast: test all palette combos in both modes
+
+# Appendix
+- Resume.txt for experience/skills
+- TECH_NOTES.md for blog/article content
+- Palette: #264653, #2A9D8F, #E9C46A, #F4A261, #E76F51
+</PRD> 

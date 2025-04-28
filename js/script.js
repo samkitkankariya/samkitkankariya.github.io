@@ -187,22 +187,38 @@ function initializeTheme() {
     // Remove transition during initial load to prevent flash
     document.body.classList.add('no-transition');
     
+    // Set default - always initialize with a value
+    let useDarkMode = false;
+    
     if (localStorage.getItem('darkMode') === 'enabled') {
-        document.body.classList.add('dark-mode');
-        darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
+        useDarkMode = true;
     } else if (localStorage.getItem('darkMode') === 'disabled') {
-        document.body.classList.remove('dark-mode');
-        darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        useDarkMode = false;
     } else if (prefersDarkMode.matches) {
         // If no preference is stored but system prefers dark mode
+        useDarkMode = true;
+        // Save this preference
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        // Set explicit default if nothing else matches
+        localStorage.setItem('darkMode', 'disabled');
+    }
+    
+    // Apply the theme
+    if (useDarkMode) {
         document.body.classList.add('dark-mode');
         darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+        darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
     }
     
     // Re-enable transitions after a small delay
     setTimeout(() => {
         document.body.classList.remove('no-transition');
     }, 100);
+    
+    console.log('Theme initialized as:', useDarkMode ? 'dark' : 'light');
 }
 
 // Call the initialization function when the DOM is loaded

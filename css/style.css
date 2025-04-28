@@ -385,10 +385,30 @@ section {
 }
 
 .expertise-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: var(--font-normal);
+    color: var(--text-color);
+    list-style-type: none; /* Explicitly remove bullets */
+}
+
+.expertise-list li {
+    position: relative;
+    padding-left: 2rem;
     font-size: 1.6rem;
-    margin-left: 2rem;
-    margin-bottom: 2rem;
-    line-height: 1.8;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+}
+
+.expertise-list li::before {
+    content: "•"; /* Use bullet character */
+    position: absolute;
+    left: 0.5rem;
+    color: var(--main-color);
+    font-size: 1.8rem;
 }
 
 .portrait {
