@@ -408,6 +408,10 @@ body {
     .services-container {
         grid-gap: 1.2rem;
     }
+    
+    .home-content h1 {
+        font-size: 3.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -484,17 +488,10 @@ section {
 }
 
 .home {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
-    padding-top: 3rem;
-    position: relative;
-    overflow: hidden;
-    min-height: 70vh;
-    max-width: 1400px;
-    margin: 0 auto;
-    gap: 4rem;
 }
 
 .home .home-content {
@@ -508,8 +505,6 @@ section {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1rem;
-    animation: fadeInUp 1.5s ease forwards !important;
-    opacity: 0 !important;
 }
 
 .home-content h1 {
@@ -517,8 +512,6 @@ section {
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.1;
-    animation: fadeInUp 1.5s ease 0.5s forwards !important;
-    opacity: 0 !important;
 }
 
 .home-content p {
@@ -532,25 +525,12 @@ section {
     margin-bottom: var(--space-md);
     font-weight: 600;
     color: var(--text-color);
-    animation: fadeInUp 1.5s ease 1s forwards, blinkCursor 0.7s step-end infinite alternate !important;
-    opacity: 0 !important;
-    border-right: 3px solid transparent !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    width: 0 !important;
-    display: inline-block;
-}
-
-.home-content .subtitle.animated {
-    animation: typing 3s steps(25, end) 1.5s forwards, blinkCursor 0.7s step-end infinite alternate !important;
 }
 
 .expertise-heading {
     font-size: 2rem;
     margin-top: 2rem;
     color: var(--main-color);
-    animation: fadeInLeft 1.5s ease 2.5s forwards !important;
-    opacity: 0 !important;
 }
 
 .expertise-list {
@@ -561,8 +541,6 @@ section {
     font-size: var(--font-normal);
     color: var(--text-color);
     list-style-type: none; /* Explicitly remove bullets */
-    opacity: 0 !important;
-    transform: translateX(-20px) !important;
 }
 
 .expertise-list li {
@@ -572,7 +550,6 @@ section {
     line-height: 1.4;
     display: flex;
     align-items: center;
-    animation: fadeInRight 1.5s ease 3s forwards !important;
 }
 
 .expertise-list li::before {
@@ -583,31 +560,12 @@ section {
     font-size: 1.8rem;
 }
 
-/* Expertise List Item Animations */
-.expertise-list li:nth-child(1) {
-    animation: fadeInRight 1.5s ease 3s forwards !important;
-}
-
-.expertise-list li:nth-child(2) {
-    animation: fadeInRight 1.5s ease 3.3s forwards !important;
-}
-
-.expertise-list li:nth-child(3) {
-    animation: fadeInRight 1.5s ease 3.6s forwards !important;
-}
-
-.expertise-list li:nth-child(4) {
-    animation: fadeInRight 1.5s ease 3.9s forwards !important;
-}
-
 .portrait {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    max-width: 400px;
-    flex: 1;
+    position: absolute;
+    top: 50%;
+    right: 259px;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
 .portrait-img {
@@ -618,11 +576,10 @@ section {
     box-shadow: 0 0 15px var(--main-color);
     border: 3px solid var(--main-color);
     transition: all 0.3s ease;
-    margin: 0 auto;
 }
 
 .portrait-img:hover {
-    transform: scale(1.03);
+    transform: scale(1.03) translateY(-50%);
     box-shadow: 0 0 25px var(--main-color);
 }
 
@@ -642,8 +599,6 @@ section {
     color: var(--main-color);
     margin: 2.5rem 1.5rem 3rem 0;
     transition: .5s ease;
-    opacity: 0 !important;
-    animation: fadeInUp 1.5s ease 4.2s forwards !important;
 }
 
 .home-content .social-media a:hover {
@@ -662,8 +617,6 @@ section {
     font-weight: 600;
     transition: var(--transition-normal);
     box-shadow: 0 0 10px var(--shadow-color);
-    opacity: 0 !important;
-    animation: fadeInUp 1.5s ease 4.2s forwards !important;
 }
 
 .btn:hover {
@@ -1062,7 +1015,7 @@ span {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -1655,7 +1608,9 @@ span {
     }
     
     .home {
-        padding: 0 3%;
+        flex-direction: column;
+        padding-top: 2rem;
+        justify-content: center;
     }
     
     .footer {
@@ -1668,6 +1623,30 @@ span {
     
     .profession-container .overlay {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 0 70%);
+    }
+
+    .portrait {
+        position: relative;
+        order: -1;
+        top: auto;
+        right: auto;
+        transform: none;
+        width: auto;
+        height: auto;
+        margin: 0 auto 2rem auto;
+        z-index: 1;
+        display: block;
+    }
+
+    .portrait-img {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .home-content {
+        order: 0;
+        text-align: center;
     }
 }
 
@@ -1759,8 +1738,12 @@ span {
     }
     
     .portrait {
-        max-width: 100%;
-        margin: 0 auto 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .portrait-img {
+        width: 180px;
+        height: 180px;
     }
     
     .expertise-list {
@@ -1813,7 +1796,7 @@ span {
     }
     
     .home-content h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
     
     .subtitle {
@@ -1892,7 +1875,7 @@ span {
 
 @media (max-width: 450px) {
     html {
-        font-size: 87.5%;
+        font-size: 50%;
     }
     
     .home-content h3 {
@@ -1903,9 +1886,13 @@ span {
         font-size: 2.8rem;
     }
     
+    .portrait {
+        margin-bottom: 1rem;
+    }
+    
     .portrait-img {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
     }
     
     .contact form .input-box input {
@@ -1985,8 +1972,6 @@ span {
     margin-bottom: var(--space-xs);
     color: var(--main-color);
     font-weight: 600;
-    animation: fadeInUp 1.5s ease 2s forwards !important;
-    opacity: 0 !important;
 }
 
 .skills-list {
@@ -2480,75 +2465,8 @@ body.theme-transition *:after {
     }
 }
 
-/* Home Content Animation Keyframes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blinkCursor {
-    from { border-right-color: var(--main-color); }
-    to { border-right-color: transparent; }
-}
-
-/* Animation for the expertise section border */
-@keyframes animatedLine {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-/* Wave animation for the name */
-@keyframes wave {
-    0% {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    40% {
-        transform: translateY(-15px);
-        color: var(--main-color);
-    }
-    70% {
-        transform: translateY(5px);
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+/* Add this new rule, perhaps near other text styling rules */
+.highlight {
+    color: var(--main-color);
+    font-weight: 600; /* Optional: make highlighted text slightly bolder */
 }

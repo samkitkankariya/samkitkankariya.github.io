@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Section Test</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, I'm</h3>
+            <h1 id="home-heading">Samkit Kankariya</h1>
+            <h2 class="subtitle">Gen AI Product Engineer</h2>
+
+            <div class="key-expertise">
+                <h3 class="expertise-heading">Key Expertise:</h3>
+                <ul class="expertise-list">
+                    <li>Agentic Frameworks</li>
+                    <li>Finetuning LLMs</li>
+                    <li>RAG Systems</li>
+                    <li>Model Context Protocols</li>
+                </ul>
+            </div>
+
+            <div class="social-media">
+                <a href="https://www.linkedin.com/in/samkitkankariya/" aria-label="LinkedIn profile"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://github.com/samkitkankariya" aria-label="GitHub profile"><i class="bx bxl-github"></i></a>
+                <a href="mailto:samkit.jk@gmail.com" aria-label="Email me"><i class="bx bx-envelope"></i></a>
+            </div>
+
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+
+        <div class="portrait">
+            <img src="images/portrait.jpeg" alt="Portrait of Samkit Kankariya" class="portrait-img">
+        </div>
+    </section>
+
+    <script>
+        // Basic script to check if elements are visible
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Home section loaded');
+            const homeSection = document.querySelector('.home');
+            console.log('Home section computed style:', window.getComputedStyle(homeSection));
+        });
+    </script>
+</body>
+</html> 
