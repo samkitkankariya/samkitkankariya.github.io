@@ -559,15 +559,6 @@ section {
     font-size: 2rem !important;
 }
 
-.portrait-img {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--main-color);
-    border: 3px solid var(--main-color);
-}
-
 .portrait {
     position: absolute;
     top: 50%;
@@ -576,7 +567,14 @@ section {
     z-index: 10;
 }
 
-/* End of added styles */
+.portrait-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--main-color);
+    border: 3px solid var(--main-color);
+}
 
 .home-content .social-media a {
     display: inline-flex;
@@ -2007,7 +2005,14 @@ span {
 }
 
 /* Combined portrait image styles to ensure consistency */
-/* Removing this duplicate block */
+.portrait-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--main-color);
+    border: 3px solid var(--main-color);
+}
 
 /* Update existing styles to use our new variables */
 .home-content h1 {
