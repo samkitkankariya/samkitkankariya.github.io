@@ -546,26 +546,17 @@ section {
 .expertise-list li {
     position: relative;
     padding-left: 2rem;
-    font-size: 1.6rem;
-    line-height: 1.4;
-    display: flex;
-    align-items: center;
+    font-size: 1.8rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.5rem !important;
 }
 
 .expertise-list li::before {
-    content: "•"; /* Use bullet character */
+    content: "•";
     position: absolute;
     left: 0.5rem;
     color: var(--main-color);
-    font-size: 1.8rem;
-}
-
-.portrait {
-    position: absolute;
-    top: 50%;
-    right: 259px;
-    transform: translateY(-50%);
-    z-index: 10;
+    font-size: 2rem !important;
 }
 
 .portrait-img {
@@ -575,12 +566,14 @@ section {
     border-radius: 50%;
     box-shadow: 0 0 15px var(--main-color);
     border: 3px solid var(--main-color);
-    transition: all 0.3s ease;
 }
 
-.portrait-img:hover {
-    transform: scale(1.03) translateY(-50%);
-    box-shadow: 0 0 25px var(--main-color);
+.portrait {
+    position: absolute;
+    top: 50%;
+    right: 259px;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
 /* End of added styles */
@@ -1748,21 +1741,30 @@ span {
     
     .expertise-list {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        flex-direction: column;
+        gap: 0.8rem;
         margin-left: 0;
         margin-top: 0.5rem;
         margin-bottom: 1rem;
     }
     
     .expertise-list li {
-        font-size: 0.9rem;
+        position: relative;
+        font-size: 1.8rem !important;
         margin: 0;
-        padding: 5px 10px;
-        background-color: rgba(var(--main-rgb), 0.1);
-        border-radius: 5px;
+        padding-left: 1.5rem;
         line-height: 1.4;
+        display: flex;
+        align-items: center;
+        color: var(--text-color) !important;
+    }
+    
+    .expertise-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0.5rem;
+        color: var(--main-color) !important;
+        font-size: 2rem !important;
     }
     
     /* Reduce clutter by simplifying text content */
@@ -1915,12 +1917,23 @@ span {
 
     /* Extra compact design for small phones */
     .expertise-list {
-        gap: 6px;
+        gap: 0.6rem;
     }
     
     .expertise-list li {
-        font-size: 0.8rem;
-        padding: 4px 8px;
+        position: relative;
+        font-size: 1.6rem !important;
+        padding-left: 1.2rem;
+        line-height: 1.3;
+        color: var(--text-color) !important;
+    }
+    
+    .expertise-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0.3rem;
+        color: var(--main-color) !important;
+        font-size: 1.8rem !important;
     }
     
     .social-media {
@@ -1994,15 +2007,7 @@ span {
 }
 
 /* Combined portrait image styles to ensure consistency */
-.portrait-img {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--main-color);
-    border: 3px solid var(--main-color);
-    transition: all 0.3s ease;
-}
+/* Removing this duplicate block */
 
 /* Update existing styles to use our new variables */
 .home-content h1 {
@@ -2469,4 +2474,71 @@ body.theme-transition *:after {
 .highlight {
     color: var(--main-color);
     font-weight: 600; /* Optional: make highlighted text slightly bolder */
+}
+
+/* Target with extremely high specificity to ensure override */
+html body .home .home-content .expertise-list li,
+body .expertise-list li,
+ul.expertise-list li {
+    font-size: 1.8rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.5rem !important;
+    color: var(--text-color) !important;
+}
+
+html body .home .home-content .expertise-list li::before,
+body .expertise-list li::before,
+ul.expertise-list li::before {
+    font-size: 2rem !important;
+    content: "•" !important;
+    position: absolute !important;
+    left: 0.5rem !important;
+    color: var(--main-color) !important;
+}
+
+/* Override any flex styles that might interfere */
+ul.expertise-list,
+.expertise-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+}
+
+/* Add mobile-specific overrides with increased specificity */
+@media (max-width: 768px) {
+    html body .home section .home-content .expertise-list li,
+    html body section .expertise-list li {
+        font-size: 1.8rem !important;
+        line-height: 1.5 !important;
+        padding-left: 1.5rem !important;
+        color: var(--text-color) !important;
+    }
+    
+    html body .home section .home-content .expertise-list li::before,
+    html body section .expertise-list li::before {
+        content: "•" !important;
+        position: absolute !important;
+        left: 0.5rem !important;
+        color: var(--main-color) !important;
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 450px) {
+    html body .home section .home-content .expertise-list li,
+    html body section .expertise-list li {
+        font-size: 1.6rem !important;
+        line-height: 1.3 !important;
+        padding-left: 1.2rem !important;
+        color: var(--text-color) !important;
+    }
+    
+    html body .home section .home-content .expertise-list li::before,
+    html body section .expertise-list li::before {
+        content: "•" !important;
+        position: absolute !important;
+        left: 0.3rem !important;
+        color: var(--main-color) !important;
+        font-size: 1.8rem !important;
+    }
 }
