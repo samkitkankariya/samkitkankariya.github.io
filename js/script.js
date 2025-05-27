@@ -346,3 +346,35 @@ prefersReducedMotion.addEventListener('change', (event) => {
     }
     // No need to re-enable animations as it would require page reload
 });
+
+// Simple visitor counter (privacy-friendly, stored locally)
+function initVisitorCounter() {
+    // Get current date
+    const today = new Date().toDateString();
+    
+    // Get stored data
+    let visitorData = JSON.parse(localStorage.getItem('visitorStats') || '{}');
+    
+    // Initialize if first visit
+    if (!visitorData.totalVisits) {
+        visitorData.totalVisits = 0;
+        visitorData.firstVisit = today;
+    }
+    
+    // Check if it's a new day
+    if (visitorData.lastVisit !== today) {
+        visitorData.totalVisits++;
+        visitorData.lastVisit = today;
+        
+        // Store updated data
+        localStorage.setItem('visitorStats', JSON.stringify(visitorData));
+    }
+    
+    // Optional: Display visitor count (uncomment if you want to show it)
+    // console.log(`Total visits: ${visitorData.totalVisits}`);
+    // console.log(`First visit: ${visitorData.firstVisit}`);
+    // console.log(`Last visit: ${visitorData.lastVisit}`);
+}
+
+// Initialize visitor counter when page loads
+document.addEventListener('DOMContentLoaded', initVisitorCounter);
