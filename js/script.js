@@ -224,63 +224,9 @@ function initializeTheme() {
 // Call the initialization function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initializeTheme();
-    
-    // Add explicit styling for expertise-list items on mobile
-    applyExpertiseListStyles();
-    
-    // Also apply styles on window resize
-    window.addEventListener('resize', applyExpertiseListStyles);
 });
 
-// Function to explicitly set styles for expertise list items
-function applyExpertiseListStyles() {
-    const expertiseItems = document.querySelectorAll('.expertise-list li');
-    const isMobile = window.innerWidth <= 768;
-    const isSmallMobile = window.innerWidth <= 450;
-    
-    expertiseItems.forEach(item => {
-        if (isSmallMobile) {
-            // Small mobile styles
-            item.style.fontSize = "1.6rem";
-            item.style.lineHeight = "1.3";
-            item.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
-        } else if (isMobile) {
-            // Regular mobile styles
-            item.style.fontSize = "1.8rem";
-            item.style.lineHeight = "1.4";
-            item.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
-        }
-        
-        // Apply style to bullet point
-        const bulletColor = getComputedStyle(document.documentElement).getPropertyValue('--main-color');
-        
-        // Create and apply ::before styles for bullets programmatically
-        const styleId = 'expertise-list-styles';
-        let styleElement = document.getElementById(styleId);
-        
-        if (!styleElement) {
-            styleElement = document.createElement('style');
-            styleElement.id = styleId;
-            document.head.appendChild(styleElement);
-        }
-        
-        if (isSmallMobile) {
-            styleElement.textContent = `
-                .expertise-list li::before {
-                    font-size: 1.8rem !important;
-                    color: ${bulletColor} !important;
-                }
-            `;
-        } else if (isMobile) {
-            styleElement.textContent = `
-                .expertise-list li::before {
-                    font-size: 2rem !important;
-                    color: ${bulletColor} !important;
-                }
-            `;
-        }
-    });
-}
+
 
 // Listen for changes in system preference
 prefersDarkMode.addEventListener('change', (event) => {
