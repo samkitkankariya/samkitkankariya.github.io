@@ -555,6 +555,26 @@ section {
 }
 
 /* Responsive styles for expertise list */
+@media (max-width: 1000px) {
+    .expertise-list li {
+        padding-left: 1.2rem;
+    }
+    
+    .expertise-list li::before {
+        left: 0.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .expertise-list li {
+        padding-left: 1rem;
+    }
+    
+    .expertise-list li::before {
+        left: 0.1rem;
+    }
+}
+
 @media (max-width: 480px) {
     .expertise-list {
         gap: 2rem;
@@ -569,7 +589,7 @@ section {
     }
     
     .expertise-list li::before {
-        left: 0.1rem;
+        left: 0.05rem;
         font-size: 1.8rem;
     }
 }
@@ -1011,6 +1031,28 @@ span {
     }
 }
 
+@media (max-width: 1000px) {
+    .about-content {
+        /* Remove glassmorphism for tablets and mobile - use solid background */
+        background: var(--bg-color) !important;
+        border: 1px solid var(--grey-300);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        padding: var(--space-lg);
+        margin: 0 var(--space-sm);
+        /* Remove glassmorphism properties */
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    .dark-mode .about-content {
+        /* Dark mode solid background for tablets and mobile */
+        background: var(--grey-200) !important;
+        border: 1px solid var(--grey-300);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+}
+
 @media (max-width: 767px) {
     .expertise-container {
         grid-template-columns: 1fr;
@@ -1018,12 +1060,12 @@ span {
     
     .about-content {
         /* Remove glassmorphism for mobile - use solid background */
-        border-radius: 15px;
+        /* border-radius: 15px;
         padding: var(--space-lg);
-        margin: 0 var(--space-sm);
+        margin: 0 var(--space-sm); */
         background: var(--bg-color);
-        border: 1px solid var(--grey-300);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        /* border: 1px solid var(--grey-300);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); */
         /* Remove glassmorphism properties */
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
@@ -1032,8 +1074,8 @@ span {
     .dark-mode .about-content {
         /* Dark mode solid background for mobile */
         background: var(--grey-200);
-        border: 1px solid var(--grey-300);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        /* border: 1px solid var(--grey-300);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
     }
     
     .timeline-item {
